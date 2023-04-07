@@ -40,7 +40,7 @@ o.mouse = 'a' -- mouse support
 -- statusline and commandline
 o.laststatus = 2 -- last window statusline enable
 o.showmode = true -- show current mode
-o.showtabline=2 -- shows tabline
+o.showtabline = 1 -- shows tabline
 --o.signcolumn = "" -- shows signcolumn
 
 o.modeline = true -- file specific options on comments

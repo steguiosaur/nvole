@@ -42,7 +42,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- buffer navigation
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<leader><S-q>", ":bdelete<CR>", opts)
+keymap("n", "<S-q>", ":bdelete<CR>", opts)
 
 -- move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -54,9 +54,6 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- remove highlight
 keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
-
--- File Tree NETRW
-keymap("n", "<leader>e", ":Lex 25<CR>", opts)
 
 
 ---------------------------------------- insert ------------------------------------------
@@ -78,5 +75,16 @@ keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- disable yank on paste
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", "pgvy", opts)
 
+
+---------------------------------------- plugin ------------------------------------------
+-- NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
