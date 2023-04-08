@@ -39,6 +39,12 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+-- window vertical to horizontal (vice versa)
+keymap("n", "<C-S-Up>", "<C-w><S-k>", opts)
+keymap("n", "<C-S-Down>", "<C-w><S-j>", opts)
+keymap("n", "<C-S-Left>", "<C-w><S-h>", opts)
+keymap("n", "<C-S-Right>", "<C-w><S-l>", opts)
+
 -- buffer navigation
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)

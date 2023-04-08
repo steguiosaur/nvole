@@ -11,4 +11,5 @@ require("plugins.syntax.treesitter")
 require("plugins.ui.bufferline")
 require("plugins.ui.lualine")
 require("plugins.ui.colorizer")
+require("plugins.ui.alpha")
 
