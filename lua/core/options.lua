@@ -3,7 +3,7 @@ local o = vim.o -- set options
 ---------------------------------------- options -----------------------------------------
 -- numberline
 o.number = true -- show numberline
-o.relativenumber = false -- relative numberline
+o.relativenumber = true -- relative numberline
 
 -- tab options
 o.expandtab = true -- enables space for tabs
@@ -39,9 +39,9 @@ o.mouse = 'a' -- mouse support
 
 -- statusline and commandline
 o.laststatus = 2 -- last window statusline enable
-o.showmode = true -- show current mode
+o.showmode = false -- show current mode
 o.showtabline = 1 -- shows tabline
---o.signcolumn = "" -- shows signcolumn
+o.signcolumn = "yes" -- shows signcolumn
 
 o.modeline = true -- file specific options on comments
 o.clipboard = "unnamedplus" -- connect to system clipboard
@@ -62,4 +62,4 @@ o.swapfile = false -- swapfiles for recovery
 
 
 ---------------------------------------- autocmds ----------------------------------------
-
+vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")

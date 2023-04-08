@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 ---------------------------------------- plugins -----------------------------------------
 -- Install plugins here
 require("lazy").setup({
-    
+
     -- UI Display
     "sam4llis/nvim-tundra", -- colorscheme
     "norcalli/nvim-colorizer.lua", -- color highlighter
@@ -32,7 +32,7 @@ require("lazy").setup({
     -- File Management
     "nvim-tree/nvim-tree.lua",
     {"nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = "nvim-lua/plenary.nvim"},
-    
+
     -- Completion plugins
     "hrsh7th/nvim-cmp", -- The completion plugin
     "hrsh7th/cmp-buffer", -- buffer completions
@@ -51,6 +51,11 @@ require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim", -- LSP diagnostics and code actions
 
     -- Syntax
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    "lukas-reineke/indent-blankline.nvim",
+    "windwp/nvim-autopairs",
 
+    -- Git
+    "tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
 })
