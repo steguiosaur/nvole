@@ -59,6 +59,7 @@ o.title = true -- show filename and directory on titlestring
 o.undofile = true -- persistent undo
 o.pumheight = 10
 o.swapfile = false -- swapfiles for recovery
+o.updatetime = 10
 
 
 ---------------------------------------- autocmds ----------------------------------------

@@ -1,6 +1,8 @@
 local servers = {
 	"clangd",
 	"pyright",
+    "texlab",
+    "rust_analyzer",
 }
 
 local settings = {
