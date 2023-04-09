@@ -33,6 +33,15 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     {"nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = "nvim-lua/plenary.nvim"},
 
+    -- Syntax
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    "lukas-reineke/indent-blankline.nvim",
+    "windwp/nvim-autopairs", -- autopair brackets and parenthesis
+
+    -- Git
+    "tpope/vim-fugitive", -- git commands on nvim
+    "lewis6991/gitsigns.nvim", -- git diff on the side
+
     -- Lsp
     "neovim/nvim-lspconfig", -- LSP enable
     "williamboman/mason.nvim", -- LSP, dap, debugger installer
@@ -51,12 +60,4 @@ require("lazy").setup({
     "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
 
-    -- Syntax
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    "lukas-reineke/indent-blankline.nvim",
-    "windwp/nvim-autopairs",
-
-    -- Git
-    "tpope/vim-fugitive",
-    "lewis6991/gitsigns.nvim",
 })

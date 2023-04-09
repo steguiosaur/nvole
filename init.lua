@@ -1,19 +1,13 @@
+-- Default configurations
 require("core.options")
 require("core.keymaps")
-require("plugins")
+require("core.lazy")
 require("core.colorscheme")
-require("plugins.lsp.cmp")
-require("plugins.lsp.mason")
-require("plugins.lsp.handlers").setup()
-require("plugins.lsp.null-ls")
-require("plugins.utils.nvim-tree")
-require("plugins.utils.telescope")
-require("plugins.utils.indentline")
-require("plugins.utils.gitsigns")
-require("plugins.syntax.treesitter")
-require("plugins.syntax.autopairs")
-require("plugins.ui.bufferline")
-require("plugins.ui.lualine")
-require("plugins.ui.colorizer")
-require("plugins.ui.alpha")
 
+-- Plugin Settings
+require("config")
+
+-- Completion and Lsp Settings
+require("lsp")
+
+-- language servers
