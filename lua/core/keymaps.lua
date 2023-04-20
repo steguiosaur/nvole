@@ -4,7 +4,7 @@ local term_opts = { silent = true }
 -- Shortened function name
 local keymap = vim.api.nvim_set_keymap
 
----------------------------------------- keymaps
+---------- KEYMAPS
 -- <Space> as mapleader
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -18,7 +18,8 @@ vim.g.localmapleader = " "
 --  term_mode = "t"
 --  command_mode = "c"
 
----------------------------------------- normal
+
+---------- NORMAL MODE
 -- line navigation on linebreak
 keymap("n", "<S-j>", "gj", opts)
 keymap("n", "<S-k>", "gk", opts)
@@ -48,7 +49,7 @@ keymap("n", "<C-S-Right>", "<C-w><S-l>", opts)
 -- buffer navigation
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-q>", ":bdelete<CR>", opts)
+keymap("n", "<S-q>", ":bd<CR>", opts)
 
 -- move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -62,16 +63,22 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
 
 
----------------------------------------- insert
+---------- INSERT MODE
 -- fast <ESC>
 keymap("i", "jj", "<ESC>", opts)
+
+-- insert mode navigation
+keymap('i', '<C-h>', '<C-o>h', opts)
+keymap('i', '<C-j>', '<C-o>j', opts)
+keymap('i', '<C-k>', '<C-o>k', opts)
+keymap('i', '<C-l>', '<C-o>l', opts)
 
 -- move text up and down
 keymap("i", "<A-j>", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
 
 
----------------------------------------- visual
+---------- VISUAL MODE
 -- line navigation on visual linebreak
 keymap("v", "<S-j>", "gj", opts)
 keymap("v", "<S-k>", "gk", opts)
@@ -85,10 +92,10 @@ keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- disable yank on paste
-keymap("v", "p", "pgvy", opts)
+keymap("v", "p", '"_dP', opts)
 
 
----------------------------------------- plugin
+---------- PLUGIN MAPPINGS
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 

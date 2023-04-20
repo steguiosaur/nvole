@@ -1,11 +1,11 @@
 -- Default configurations
 require("core.options")
+require("core.keymaps")
 require("core.lazy") -- plugin manager
 require("core.colorscheme")
 
 -- Plugin Settings
 require("config")
-require("core.keymaps")
 
 -- Completion and Lsp Settings
 require("lsp.cmp")

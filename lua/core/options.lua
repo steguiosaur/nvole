@@ -1,6 +1,6 @@
 local o = vim.o -- set options
 
----------------------------------------- options -----------------------------------------
+---------- OPTIONS
 -- numberline
 o.number = true         -- show numberline
 o.relativenumber = true -- relative numberline
@@ -62,5 +62,5 @@ o.swapfile = false     -- swapfiles for recovery
 o.updatetime = 250
 
 
----------------------------------------- autocmds ----------------------------------------
+---------- AUTOCMD
 vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")

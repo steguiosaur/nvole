@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
----------------------------------------- plugins -----------------------------------------
+---------- PLUGINS
 -- Install plugins here
 require("lazy").setup({
 
