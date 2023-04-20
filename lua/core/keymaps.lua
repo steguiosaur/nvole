@@ -4,7 +4,7 @@ local term_opts = { silent = true }
 -- Shortened function name
 local keymap = vim.api.nvim_set_keymap
 
----------------------------------------- keymaps -----------------------------------------
+---------------------------------------- keymaps
 -- <Space> as mapleader
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -18,7 +18,7 @@ vim.g.localmapleader = " "
 --  term_mode = "t"
 --  command_mode = "c"
 
----------------------------------------- normal ------------------------------------------
+---------------------------------------- normal
 -- line navigation on linebreak
 keymap("n", "<S-j>", "gj", opts)
 keymap("n", "<S-k>", "gk", opts)
@@ -62,7 +62,7 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
 
 
----------------------------------------- insert ------------------------------------------
+---------------------------------------- insert
 -- fast <ESC>
 keymap("i", "jj", "<ESC>", opts)
 
@@ -71,7 +71,11 @@ keymap("i", "<A-j>", "<ESC>:m .+1<CR>==gi", opts)
 keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
 
 
----------------------------------------- visual ------------------------------------------
+---------------------------------------- visual
+-- line navigation on visual linebreak
+keymap("v", "<S-j>", "gj", opts)
+keymap("v", "<S-k>", "gk", opts)
+
 -- indent mode on (while holding <Shift>)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -84,9 +88,26 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "p", "pgvy", opts)
 
 
----------------------------------------- plugin ------------------------------------------
+---------------------------------------- plugin
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+local function on_attach(bufnr)
+    local api = require("nvim-tree.api")
+
+    local function opts(desc)
+        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, nowait = true }
+    end
+
+    keymap('n', '<CR>', api.node.open.edit, opts('Open'))
+    keymap('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
+    keymap('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Dotfiles'))
+    keymap('n', 'r', api.fs.rename, opts('Rename'))
+    keymap('n', 'R', api.tree.reload, opts('Refresh'))
+    keymap('n', 'U', api.tree.toggle_custom_filter, opts('Toggle Hidden'))
+    keymap('n', 'S', api.tree.search_node, opts('Search'))
+
+end
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -94,3 +115,4 @@ keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
