@@ -1,1 +1,4 @@
-require('lspconfig').pyright.setup{}
+require('lspconfig').pyright.setup{
+    cmd = { "pyright-langserver", "--stdio" };
+    filetypes = { "python" };
+}

@@ -1,5 +1,6 @@
 local servers = {
 	"clangd",
+    "lua_ls",
 	"pyright",
     "texlab",
     "rust_analyzer",
