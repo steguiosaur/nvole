@@ -7,7 +7,7 @@ end
 -- Set up LuaSnip.
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
-  return
+    return
 end
 
 local kind_icons = {
@@ -103,10 +103,10 @@ cmp.setup {
     },
     sources = {
         { name = "nvim_lsp" },
-        { name = "nvim_lua" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "nvim_lua" },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,

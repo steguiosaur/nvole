@@ -22,6 +22,7 @@ require("lazy").setup({
     "norcalli/nvim-colorizer.lua", -- color highlighter
     "nvim-tree/nvim-web-devicons", -- adds file glyphs
     "nvim-lualine/lualine.nvim", -- statusline
+    {"arkav/lualine-lsp-progress", dependencies = "nvim-lualine/lualine.nvim"},
     {"akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons"},
     {"goolord/alpha-nvim", dependencies = "nvim-tree/nvim-web-devicons"}, -- start screen
 
@@ -42,7 +43,13 @@ require("lazy").setup({
     "tpope/vim-fugitive", -- git commands on nvim
     "lewis6991/gitsigns.nvim", -- git diff on the side
 
-    -- Lsp
+    -- Functionalities
+    {"folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons"},
+    "numToStr/Comment.nvim", -- fast code comment
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
+  
+
+    -- LSP
     "neovim/nvim-lspconfig", -- LSP enable
     "williamboman/mason.nvim", -- LSP, dap, debugger installer
     "williamboman/mason-lspconfig.nvim", -- simple to use language server installer
@@ -54,10 +61,16 @@ require("lazy").setup({
     "hrsh7th/cmp-path", -- path completions
     "hrsh7th/cmp-cmdline", -- cmdline completions
     "hrsh7th/cmp-nvim-lsp", -- completion on lsp
-    "saadparwaiz1/cmp_luasnip", -- snippet completions
 
     -- Snippet
+    "saadparwaiz1/cmp_luasnip", -- snippet completions
     "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
+
+    -- Language Server
+    "simrat39/rust-tools.nvim",
+
+    -- Debugger
+    "mfussenegger/nvim-dap",
 
 })

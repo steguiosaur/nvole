@@ -34,6 +34,8 @@ require('nvim-tundra').setup({
         hints = {},
     },
     plugins = {
+        lsp = true,
+        cmp = true,
         treesitter = true,
         telescope = true,
         nvimtree = true,

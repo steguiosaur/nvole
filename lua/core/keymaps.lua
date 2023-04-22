@@ -49,7 +49,7 @@ keymap("n", "<C-S-Right>", "<C-w><S-l>", opts)
 -- buffer navigation
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-q>", ":bd<CR>", opts)
+keymap("n", "<S-q>", ":bw<CR>", opts)
 
 -- move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
