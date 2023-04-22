@@ -47,7 +47,7 @@ require("lazy").setup({
     {"folke/trouble.nvim", dependencies = "nvim-tree/nvim-web-devicons"},
     "numToStr/Comment.nvim", -- fast code comment
     {'akinsho/toggleterm.nvim', version = "*", config = true},
-  
+
 
     -- LSP
     "neovim/nvim-lspconfig", -- LSP enable
@@ -68,7 +68,8 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- Language Server
-    "simrat39/rust-tools.nvim",
+    "simrat39/rust-tools.nvim", -- Rust
+    "lervag/vimtex", -- LaTeX
 
     -- Debugger
     "mfussenegger/nvim-dap",

@@ -99,23 +99,6 @@ keymap("v", "p", '"_dP', opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
-local function on_attach(bufnr)
-    local api = require("nvim-tree.api")
-
-    local function opts(desc)
-        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, nowait = true }
-    end
-
-    keymap('n', '<CR>', api.node.open.edit, opts('Open'))
-    keymap('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
-    keymap('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Dotfiles'))
-    keymap('n', 'r', api.fs.rename, opts('Rename'))
-    keymap('n', 'R', api.tree.reload, opts('Refresh'))
-    keymap('n', 'U', api.tree.toggle_custom_filter, opts('Toggle Hidden'))
-    keymap('n', 'S', api.tree.search_node, opts('Search'))
-
-end
-
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
