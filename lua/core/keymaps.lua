@@ -112,3 +112,12 @@ keymap("n", "<leader>lm", ":MarkdownPreview<CR>", opts)
 keymap("n", "<leader>ls", ":MarkdownPreviewStop<CR>", opts)
 keymap("n", "<leader>lt", ":MarkdownPreviewToggle<CR>", opts)
 
+-- Trouble
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
+keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
+keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+
+-- ToggleTerm
+keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)

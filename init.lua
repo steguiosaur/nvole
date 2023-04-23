@@ -20,6 +20,8 @@ require("config.telescope")
 require("config.nvimtree")
 
 require("config.comment")
+require("config.trouble")
+require("config.toggleterm")
 
 -- Completion and Lsp Settings
 require("lsp.handlers").setup()
