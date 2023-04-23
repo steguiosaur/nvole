@@ -71,5 +71,9 @@ lspconfig.bashls.setup{}
 lspconfig.cssls.setup{}
 lspconfig.jsonls.setup{}
 lspconfig.marksman.setup{}
+
+-- MarkdownPreview
+vim.g.mkdp_theme = "dark"
+
 lspconfig.tsserver.setup{}
 lspconfig.html.setup{}

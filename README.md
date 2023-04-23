@@ -1,4 +1,14 @@
-# NVIM config in Lua
+# :hatching_chick: LuaNvim
 
-A basic configuration file for Neovim.
+A Neovim config made in Lua. 
 
+### Required Fixes
+
+- [ ] Snippets for **VimTeX**
+- [ ] Inkscape integration with **VimTeX**
+- [ ] Better workflow on **VimTeX** and **Texlab**
+- [ ] **ltex** language server
+- [ ] Snippets for **Clangd** 
+- [ ] Snippets and LSP for **jdtls** 
+- [ ] **Markdown** language server
+- [ ] Reduce bloat in LSP

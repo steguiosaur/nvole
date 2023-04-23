@@ -19,6 +19,7 @@ require("config.alpha")
 require("config.telescope")
 require("config.nvimtree")
 
+require("config.comment")
 
 -- Completion and Lsp Settings
 require("lsp.handlers").setup()

@@ -106,3 +106,9 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
+
+-- MarkdownPreview
+keymap("n", "<leader>lm", ":MarkdownPreview<CR>", opts)
+keymap("n", "<leader>ls", ":MarkdownPreviewStop<CR>", opts)
+keymap("n", "<leader>lt", ":MarkdownPreviewToggle<CR>", opts)
+
