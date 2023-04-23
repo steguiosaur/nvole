@@ -10,6 +10,10 @@ if not snip_status_ok then
     return
 end
 
+require("luasnip/loaders/from_vscode").lazy_load()
+
+require("luasnip").filetype_extend("python", {"django"})
+
 local kind_icons = {
     Text = "",
     Method = "m",
@@ -92,20 +96,20 @@ cmp.setup {
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
         -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
         vim_item.menu = ({
+            luasnip = "[LSnip]",
             nvim_lsp = "[LSP]",
-            nvim_lua = "[NVIM_LUA]",
-            luasnip = "[Snippet]",
-            buffer = "[Buffer]",
             path = "[Path]",
+            buffer = "[Buffer]",
+            nvim_lua = "[NVIM_LUA]",
         })[entry.source.name]
         return vim_item
         end,
     },
     sources = {
-        { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
+        { name = "nvim_lsp" },
         { name = "path" },
+        { name = "buffer" },
         { name = "nvim_lua" },
     },
     confirm_opts = {

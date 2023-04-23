@@ -56,16 +56,18 @@ require("lazy").setup({
     "jose-elias-alvarez/null-ls.nvim", -- LSP diagnostics and code actions
 
     -- Completion plugins
-    "hrsh7th/nvim-cmp", -- The completion plugin
-    "hrsh7th/cmp-buffer", -- buffer completions
-    "hrsh7th/cmp-path", -- path completions
-    "hrsh7th/cmp-cmdline", -- cmdline completions
-    "hrsh7th/cmp-nvim-lsp", -- completion on lsp
+    {"hrsh7th/nvim-cmp", -- The completion plugin
+        dependencies = {
+            "hrsh7th/cmp-buffer", -- buffer completions
+            "hrsh7th/cmp-path", -- path completions
+            "hrsh7th/cmp-nvim-lsp", -- completion on lsp
+            "hrsh7th/cmp-cmdline", -- cmdline completions
 
-    -- Snippet
-    "saadparwaiz1/cmp_luasnip", -- snippet completions
-    "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets",
+            "saadparwaiz1/cmp_luasnip", -- snippet completions
+            "rafamadriz/friendly-snippets",
+            "L3MON4D3/LuaSnip",
+        },
+    },
 
     -- Language Server
     "simrat39/rust-tools.nvim", -- Rust
