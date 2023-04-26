@@ -119,7 +119,7 @@ keymap("n", "<leader>ls", ":MarkdownPreviewStop<CR>", opts)
 keymap("n", "<leader>lt", ":MarkdownPreviewToggle<CR>", opts)
 
 -- Trouble
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+keymap("n", "<leader>xx", "<cmd>TroubleToggl document_diagnostics<cr>", opts)
 keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
 keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)

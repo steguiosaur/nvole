@@ -17,27 +17,18 @@ require('lsp-progress').setup({
 
 })
 
-local function lspinfo()
-    vim.cmd('LspInfo')
-end
-
-local function trouble()
-    vim.cmd('Trouble document_diagnostics')
-end
-
 -- Lualine
 require('lualine').setup{
     options = { theme = 'nightfly' },
-    component_separators = { left = '|', right = '|'},
     section_separators = { left = '|', right = '|'},
     sections = {
         lualine_a = {'mode'},
         lualine_b = {
-            'branch', 
+            'branch',
             'diff',
             {
                 'diagnostics',
-                on_click = trouble
+                on_click = function () vim.cmd('Trouble document_diagnostics') end
             },
             'filename'
         },
@@ -45,7 +36,7 @@ require('lualine').setup{
         lualine_x = { 
             {
                 require("lsp-progress").progress,
-                on_click = lspinfo
+                on_click = function() vim.cmd('LspInfo') end
             },
             'encoding', 'fileformat', 'filetype'
         },
