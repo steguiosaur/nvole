@@ -20,9 +20,12 @@ require("lazy").setup({
     -- UI Display
     "sam4llis/nvim-tundra", -- colorscheme
     "norcalli/nvim-colorizer.lua", -- color highlighter
-    "nvim-tree/nvim-web-devicons", -- adds file glyphs
-    "nvim-lualine/lualine.nvim", -- statusline
-    {"arkav/lualine-lsp-progress", dependencies = "nvim-lualine/lualine.nvim"},
+    {"nvim-lualine/lualine.nvim", -- statusline
+        dependencies = {
+            "linrongbin16/lsp-progress.nvim",
+            "nvim-tree/nvim-web-devicons",
+        }
+    },
     {"akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons"},
     {"goolord/alpha-nvim", dependencies = "nvim-tree/nvim-web-devicons"}, -- start screen
 
@@ -31,7 +34,7 @@ require("lazy").setup({
     "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
     -- File Management
-    "nvim-tree/nvim-tree.lua",
+    {"nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons"},
     {"nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = "nvim-lua/plenary.nvim"},
 
     -- Syntax
