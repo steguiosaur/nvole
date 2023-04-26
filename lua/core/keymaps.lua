@@ -8,7 +8,7 @@ local keymap = vim.api.nvim_set_keymap
 -- <Space> as mapleader
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
-vim.g.localmapleader = " "
+vim.g.maplocalleader = " "
 
 -- Modes
 --  normal_mode = "n"
@@ -17,7 +17,6 @@ vim.g.localmapleader = " "
 --  visual_block_mode = "x"
 --  term_mode = "t"
 --  command_mode = "c"
-
 
 ---------- NORMAL MODE
 -- line navigation on linebreak
@@ -62,10 +61,13 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 -- remove highlight
 keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
 
+-- word count
+keymap("n", "<C-g>", "g<C-g>", opts)
+
 
 ---------- INSERT MODE
 -- fast <ESC>
-keymap("i", "jj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 
 -- insert mode navigation
 keymap('i', '<C-h>', '<C-o>h', opts)
@@ -94,6 +96,9 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 -- disable yank on paste
 keymap("v", "p", '"_dP', opts)
 
+-- word count
+keymap("v", "<C-g>", "g<C-g>", opts)
+
 
 ---------- PLUGIN MAPPINGS
 -- NvimTree
@@ -103,6 +108,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 keymap("n", "<leader>fc", ":Telescope git_commits<CR>", opts)
 keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
@@ -121,3 +127,11 @@ keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 
 -- ToggleTerm
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
+
+keymap('t', '<esc>', [[<C-\><C-n>]], term_opts)
+keymap('t', 'jk', [[<C-\><C-n>]], term_opts)
+keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], term_opts)
+keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], term_opts)
+keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], term_opts)
+keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], term_opts)
+keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], term_opts)

@@ -55,7 +55,6 @@ lspconfig.texlab.setup{
     filetypes = { "tex", "plaintex", "bib" };
 }
 
-vim.g.maplocalleader = " "
 vim.g.tex_flavor = "latex"
 vim.g.vimtex_syntax_conceal_disable = true
 vim.g.vimtex_quickfix_mode = true
@@ -70,6 +69,7 @@ lspconfig.zls.setup{
 lspconfig.bashls.setup{}
 lspconfig.cssls.setup{}
 lspconfig.jsonls.setup{}
+lspconfig.zk.setup{}
 lspconfig.marksman.setup{}
 
 -- MarkdownPreview

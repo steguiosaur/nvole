@@ -10,7 +10,7 @@ o.expandtab = true -- enables space for tabs
 o.tabstop = 4      -- number of spaces in a tab
 o.softtabstop = 4  -- number of spaces per <Tab> and <Backspace>
 
---o.autoindent = true -- copy indent from previous line
+o.autoindent = false -- copy indent from previous line
 o.shiftwidth = 4 -- space for indentation
 
 -- word search/highlighting
