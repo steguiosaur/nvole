@@ -6,9 +6,9 @@ local servers = {
     "diagnosticls",
     "html",
     "jsonls",
-    "lua_ls",
+    -- "lua_ls",
 	"pyright",
-    "texlab",
+    -- "texlab",
     "tsserver",
     -- "rust_analyzer",
     -- "zls",
@@ -23,7 +23,7 @@ local settings = {
             package_uninstalled = "✗"
 		},
 	},
---	log_level = vim.log.levels.INFO,
+	log_level = vim.log.levels.INFO,
 	max_concurrent_installers = 4,
 }
 
