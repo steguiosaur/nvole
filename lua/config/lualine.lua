@@ -33,12 +33,12 @@ require('lualine').setup{
             'filename'
         },
         lualine_c = {},
-        lualine_x = { 
+        lualine_x = {
             {
                 require("lsp-progress").progress,
                 on_click = function() vim.cmd('LspInfo') end
             },
-            'encoding', 'fileformat', 'filetype'
+            'fileformat', 'encoding', 'filetype'
         },
         lualine_y = {'progress'},
         lualine_z = {'location'}

@@ -1,18 +1,17 @@
 local servers = {
     "bashls",
-	"clangd",
+	-- "clangd",
     "cmake",
     "cssls",
     "diagnosticls",
     "html",
     "jsonls",
     "lua_ls",
-    "marksman",
 	"pyright",
     "texlab",
     "tsserver",
-    "rust_analyzer",
-    "zls",
+    -- "rust_analyzer",
+    -- "zls",
 }
 
 local settings = {
@@ -24,14 +23,14 @@ local settings = {
             package_uninstalled = "✗"
 		},
 	},
-	log_level = vim.log.levels.INFO,
+--	log_level = vim.log.levels.INFO,
 	max_concurrent_installers = 4,
 }
 
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
-	automatic_installation = true,
+    automatic_installation = true,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
