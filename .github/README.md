@@ -1,6 +1,6 @@
-# :hatching_chick: LuaNvim
+# :rat: nVole
 
-**Neovim config made in Lua**
+**A not so minimal Neovim config ported to Lua**
 
 ![Neovim with LaTeX](./nvim_latex.png) 
 
