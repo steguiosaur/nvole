@@ -1,4 +1,12 @@
-local servers = {
+local add_server = {
+    "clangd",
+    "lua_ls",
+    "zls",
+    "rust_analyzer",
+    "texlab"
+}
+
+local default = {
     "bashls",
     "cmake",
     "cssls",
@@ -6,7 +14,10 @@ local servers = {
     "html",
     "jsonls",
     "pyright",
+    "tsserver"
 }
+
+local servers = vim.fn.has("Android") == 1 and default or {unpack(default), unpack(add_server)}
 
 local settings = {
 	ui = {

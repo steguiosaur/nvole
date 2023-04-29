@@ -3,66 +3,46 @@ if not status_lsp_ok then
 	return
 end
 
+-- requires manual compilation or installation in $PATH
 -- Clangd
-lspconfig.clangd.setup{
-    cmd = {"clangd"};
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" };
-    root_pattern = {
-        '.clangd',
-        '.clang-tidy',
-        '.clang-format',
-        'compile_commands.json',
-        'compile_flags.txt',
-        'configure.ac',
-        '.git'
-    };
-}
+if vim.fn.executable('clangd') == 1 then
+    lspconfig.clangd.setup{
+        cmd = {"clangd"};
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" };
+        root_pattern = {
+            '.clangd',
+            '.clang-tidy',
+            '.clang-format',
+            'compile_commands.json',
+            'compile_flags.txt',
+            'configure.ac',
+            '.git'
+        };
+    }
+end
 
--- Cmake
-lspconfig.cmake.setup{
-    cmd = {"cmake-language-server"};
-    filetypes = {"cmake"};
-    init_options = {
-        build_directory = "build"
-    };
-    root_pattern = {
-        'CMakePresets.json',
-        'CTestConfig.cmake',
-        '.git',
-        'build',
-        'cmake'
-    };
-}
-
--- Python
-lspconfig.pyright.setup{
-    cmd = { "pyright-langserver", "--stdio" };
-    filetypes = { "python" };
-}
 
 -- Rust
-lspconfig.rust_analyzer.setup{
-    cmd = {"rust-analyzer"};
-    filetypes = {"rust", "rs"};
-}
+if vim.fn.executable('rust-analyzer') == 1 then
+    lspconfig.rust_analyzer.setup{
+        cmd = {"rust-analyzer"};
+        filetypes = {"rust", "rs"};
+    }
+end
 
 -- LaTeX
-lspconfig.texlab.setup{
-    cmd = {"texlab"};
-    filetypes = { "tex", "plaintex", "bib" };
-}
+if vim.fn.executable('texlab') == 1 then
+    lspconfig.texlab.setup{
+        cmd = {"texlab"};
+        filetypes = { "tex", "plaintex", "bib" };
+    }
+end
 
 -- Zig Language Server
-lspconfig.zls.setup{
-    cmd = {"zls"};
-    filetypes = { "zig", "zir" };
-}
+if vim.fn.executable('zls') == 1 then
+    lspconfig.zls.setup{
+        cmd = {"zls"};
+        filetypes = { "zig", "zir" };
+    }
+end
 
-lspconfig.lua_ls.setup{}
-lspconfig.bashls.setup{}
-lspconfig.cssls.setup{}
-lspconfig.jsonls.setup{}
-lspconfig.tsserver.setup{}
-lspconfig.html.setup{}
-lspconfig.zk.setup{}
-lspconfig.marksman.setup{}
