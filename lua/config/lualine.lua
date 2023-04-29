@@ -17,6 +17,13 @@ require('lsp-progress').setup({
 
 })
 
+local line_x = {}
+if vim.fn.has("Android") == 1 then
+    line_x = {}
+else
+    line_x = {'fileformat', 'encoding'}
+end
+
 -- Lualine
 require('lualine').setup{
     options = { theme = 'nightfly' },
@@ -38,7 +45,7 @@ require('lualine').setup{
                 require("lsp-progress").progress,
                 on_click = function() vim.cmd('LspInfo') end
             },
-            'fileformat', 'encoding', 'filetype'
+            line_x, 'filetype'
         },
         lualine_y = {'progress'},
         lualine_z = {'location'}

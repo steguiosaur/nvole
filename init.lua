@@ -24,10 +24,10 @@ require("config.trouble")
 require("config.toggleterm")
 
 -- Completion and Lsp Settings
+require("lsp.lsserver")
 require("config.preview")
+
 require("lsp.handlers").setup()
 require("lsp.cmp")
 require("lsp.mason")
 require("lsp.null-ls")
-
-require("lsp.lsserver")
