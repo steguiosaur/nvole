@@ -58,3 +58,11 @@ lspconfig.zls.setup{
     filetypes = { "zig", "zir" };
 }
 
+lspconfig.lua_ls.setup{}
+lspconfig.bashls.setup{}
+lspconfig.cssls.setup{}
+lspconfig.jsonls.setup{}
+lspconfig.tsserver.setup{}
+lspconfig.html.setup{}
+lspconfig.zk.setup{}
+lspconfig.marksman.setup{}
