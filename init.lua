@@ -30,4 +30,4 @@ require("lsp.cmp")
 require("lsp.mason")
 require("lsp.null-ls")
 
---require("lsp.lspconf")
+require("lsp.lsserver")

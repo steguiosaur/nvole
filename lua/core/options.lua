@@ -61,8 +61,13 @@ o.pumheight = 10
 o.swapfile = false     -- swapfiles for recovery
 o.updatetime = 250
 
----------- GLOBAL
-vim.g.python3_host_prog = "/usr/bin/python"
-
----------- AUTOCMD
-vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
+---------- GLOBAL & AUTOCMD
+if vim.fn.has("Android") == 1 then
+    vim.g.python3_host_prog = '$PREFIX/bin/python'
+    vim.g.python_host_prog = '$PREFIX/bin/python2'
+else
+    vim.g.python3_host_prog = '/usr/bin/python'
+    vim.g.python_host_prog = '/usr/bin/python2'
+    -- vertical help buffer
+    vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
+end
