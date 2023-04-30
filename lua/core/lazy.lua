@@ -27,7 +27,12 @@ require("lazy").setup({
         }
     },
     {"akinsho/bufferline.nvim", version = "v3.*", dependencies = "nvim-tree/nvim-web-devicons"},
-    {"goolord/alpha-nvim", dependencies = "nvim-tree/nvim-web-devicons"}, -- start screen
+    {"goolord/alpha-nvim", -- start screen
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "BlakeJC94/alpha-nvim-fortune"
+        }
+    },
 
     -- Defaults
     "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim

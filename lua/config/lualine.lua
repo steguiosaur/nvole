@@ -17,12 +17,7 @@ require('lsp-progress').setup({
 
 })
 
-local line_x = {}
-if vim.fn.has("Android") == 1 then
-    line_x = {}
-else
-    line_x = {'fileformat', 'encoding'}
-end
+local line_x = vim.fn.has("Android") == 1 and {} or {'fileformat', 'encoding'}
 
 -- Lualine
 require('lualine').setup{
