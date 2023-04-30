@@ -1,21 +1,16 @@
-# :rat: nVole
+![Nvole Vole in suit](./Vole.png) 
 
-**A not so minimal Neovim config ported to Lua**
+## :gear: Features
+
+- Completion and diagnostics on several languages
+- Code formatter with `null-ls`
+- Preview LaTeX using Zathura
+- Preview Markdown, UML, etc. in default browser
+- Compatibility with Termux - Android terminal emulator
 
 ![Neovim with LaTeX](./nvim_latex.png) 
 
-## :gear: Features
-> Configurable under `~/.config/nvim/lua/core/`
-
-- Preview LaTeX using Zathura
-- Preview Markdown, UML, etc. in default browser
-
 ## :hammer_and_wrench: Setup
-
-### Required
-
-- Neovim
-- Git
 
 ### Installation
 
@@ -33,10 +28,19 @@ apt install git neovim
 pacman -S git neovim
 ```
 
-Clone the repository to `$HOME/.config/nvim`
+Clone the repository to `$HOME/.config/nvim` or clone the repo and run install script:
+> `install.sh` creates backup for old nvim configuration
 
 ```console
-git clone https://github.com/steguiosaur/nvim.git ~/.config/nvim
+git clone https://github.com/steguiosaur/nvole.git ~/.config/nvim
+```
+`install.sh` option:
+
+```console
+git clone https://github.com/steguiosaur/nvole.git
+cd nvole/
+chmod +x install.sh
+./install.sh
 ```
 
 Install plugins by running `nvim` in the terminal. It will automatically install 
@@ -56,8 +60,21 @@ mode and look for the language server that suits your needs.
 > There were several Language Servers that will automatically install. To disable, go
 to `~/.config/nvim/lua/lsp/mason.lua` and edit the listed servers.
 
-The config does not guarantee a solid configuration on LSP for the reason it is new.
-If you consider to move on a configuration that just works even on Android, you might
-want to visit this config:
+Add the installed server on `add_server` table on `~/.config/nvim/lua/lsp/mason.lua`.
 
-- [steguiosaur/nvim](https://github.com/steguiosaur/nvim)
+#### ERROR Log: `Current platform is unsupported` in Termux 
+The config does not guarantee several Language Server to work on `aarch64` architecture.
+Manual server installation is needed to make LSP work. We'll take `clangd` and 
+`rust-analyzer` as an example:
+
+- Install `clangd` using node package manager (requires `nodejs`): `npm install clangd`
+- Install `rust-analyzer` using the built-in package manager: `apt install rust-analyzer`
+
+In some cases, the binary is not available on any package managers. The alternative
+option for this is to clone the language server repository and compile the said
+server before adding it to `$PATH`.
+ 
+If you are considering to move on a configuration that just works even on Android, 
+you might want to visit this config even though it is rarely supported nowadays:
+
+- [steguiosaur/nvim](https://github.com/steguiosaur/nvim) - uses coc.nvim for managing language servers
