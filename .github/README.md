@@ -28,19 +28,11 @@ apt install git neovim
 pacman -S git neovim
 ```
 
-Clone the repository to `$HOME/.config/nvim` or clone the repo and run install script:
-> `install.sh` creates backup for old nvim configuration
+Clone the repository to `$HOME/.config/nvim`:
+> create backup of your config before installing
 
 ```console
 git clone https://github.com/steguiosaur/nvole.git ~/.config/nvim
-```
-`install.sh` option:
-
-```console
-git clone https://github.com/steguiosaur/nvole.git
-cd nvole/
-chmod +x install.sh
-./install.sh
 ```
 
 Install plugins by running `nvim` in the terminal. It will automatically install 
