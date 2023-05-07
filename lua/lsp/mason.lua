@@ -17,7 +17,7 @@ local default = {
     "tsserver"
 }
 
-local servers = vim.fn.has("Android") == 1 and default or {unpack(default), unpack(add_server)}
+local servers = vim.fn.has("Android") == 1 and default or vim.tbl_extend("force", default, add_server)
 
 local settings = {
 	ui = {
