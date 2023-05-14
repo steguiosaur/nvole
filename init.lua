@@ -4,7 +4,6 @@ require("core.keymaps")
 require("core.lazy") -- plugin manager
 require("core.colorscheme")
 
-
 -- Plugin Settings
 require("config.treesitter")
 require("config.gitsigns")
@@ -26,6 +25,7 @@ require("config.toggleterm")
 -- Completion and Lsp Settings
 require("lsp.lsserver")
 require("config.preview")
+require("config.glow")
 
 require("lsp.handlers").setup()
 require("lsp.cmp")

@@ -2,7 +2,7 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shortened function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 ---------- KEYMAPS
 -- <Space> as mapleader
@@ -20,8 +20,8 @@ vim.g.maplocalleader = " "
 
 ---------- NORMAL MODE
 -- line navigation on linebreak
-keymap("n", "<S-j>", "gj", opts)
-keymap("n", "<S-k>", "gk", opts)
+keymap("n", "<S-j>", "}", opts)
+keymap("n", "<S-k>", "{", opts)
 
 -- vertical and horizontal window
 keymap("n", "<leader>v", "<C-w>v", opts)
@@ -64,6 +64,8 @@ keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
 -- word count
 keymap("n", "<C-g>", "g<C-g>", opts)
 
+keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+keymap("n", "<leader>gs", vim.cmd.Git)
 
 ---------- INSERT MODE
 -- fast <ESC>
@@ -82,8 +84,8 @@ keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
 
 ---------- VISUAL MODE
 -- line navigation on visual linebreak
-keymap("v", "<S-j>", "gj", opts)
-keymap("v", "<S-k>", "gk", opts)
+keymap("v", "<S-j>", "}", opts)
+keymap("v", "<S-k>", "{", opts)
 
 -- indent mode on (while holding <Shift>)
 keymap("v", "<", "<gv", opts)
@@ -117,6 +119,7 @@ keymap("n", "<leader>fs", ":Telescope git_status<CR>", opts)
 keymap("n", "<leader>lm", ":MarkdownPreview<CR>", opts)
 keymap("n", "<leader>ls", ":MarkdownPreviewStop<CR>", opts)
 keymap("n", "<leader>lt", ":MarkdownPreviewToggle<CR>", opts)
+keymap("n", "<leader>lg", ":Glow<CR>", opts)
 
 -- Trouble
 keymap("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)

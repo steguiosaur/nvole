@@ -8,10 +8,6 @@ require('nvim-tundra').setup({
         enabled = true,
         color = nil,
     },
-    editor = {
-        search = {},
-        substitute = {},
-    },
     syntax = {
         booleans = { bold = true, italic = false },
         comments = { bold = true, italic = false },
@@ -27,21 +23,8 @@ require('nvim-tundra').setup({
         strings = {},
         types = { italic = false },
     },
-    diagnostics = {
-        errors = {},
-        warnings = {},
-        information = {},
-        hints = {},
-    },
-    plugins = {
-        lsp = true,
-        cmp = true,
-        treesitter = true,
-        telescope = true,
-        nvimtree = true,
-        gitsigns = true,
-    },
 })
 
 vim.opt.background = 'dark'
 vim.cmd('colorscheme tundra')
+

@@ -1,0 +1,8 @@
+{
+    "diagnostics.globals": [
+        "vm"
+    ],
+    "diagnostics.disable": [
+        "undefined-global"
+    ]
+}

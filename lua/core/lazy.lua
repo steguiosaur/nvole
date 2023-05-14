@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 ---------- PLUGINS
 -- Install plugins here
-require("lazy").setup({
+require("lazy").setup{
 
     -- UI Display
     "sam4llis/nvim-tundra", -- colorscheme
@@ -81,8 +81,9 @@ require("lazy").setup({
     "simrat39/rust-tools.nvim", -- Rust
     "lervag/vimtex", -- LaTeX
     {"iamcco/markdown-preview.nvim", build = "cd app && npm install"},
+    {"ellisonleao/glow.nvim", cmd = "Glow"},
 
     -- Debugger
     "mfussenegger/nvim-dap",
 
-})
+}

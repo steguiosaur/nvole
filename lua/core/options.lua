@@ -61,6 +61,7 @@ o.pumheight = 10
 o.swapfile = false     -- swapfiles for recovery
 o.updatetime = 250
 
+
 ---------- GLOBAL & AUTOCMD
 if vim.fn.has("Android") == 1 then
     vim.g.python3_host_prog = '$PREFIX/bin/python'
