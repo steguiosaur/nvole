@@ -1,5 +1,5 @@
 -- TreeSitter
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
     ensure_installed = {
         "c",
         "cpp",
@@ -15,6 +15,8 @@ require'nvim-treesitter.configs'.setup {
     },
     highlight = {
         enable = true,
+        use_languagetree = true,
     },
+    indent = { enable = true },
 }
 

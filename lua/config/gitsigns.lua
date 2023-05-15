@@ -1,1 +1,2 @@
-require('gitsigns').setup()
+require("gitsigns").setup {
+}

@@ -3,8 +3,6 @@ if not status_lsp_ok then
 	return
 end
 
-local rt = require("rust-tools")
-
 -- requires manual compilation or installation in $PATH
 -- Clangd
 if vim.fn.executable('clangd') == 1 then
@@ -23,12 +21,12 @@ if vim.fn.executable('clangd') == 1 then
     }
 end
 
-
 -- Rust
 if vim.fn.executable('rust-analyzer') == 1 then
-    rt.setup{
+    require("rust-tools").setup{
         server = {
-            on_attach = function(_, bufnr) end
+            on_attach = require("lsp.lspconfig").on_attach,
+            capabilities = require("lsp.lspconfig").capabilities
         }
     }
 end

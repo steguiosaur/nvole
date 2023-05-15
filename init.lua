@@ -22,12 +22,12 @@ require("config.comment")
 require("config.trouble")
 require("config.toggleterm")
 
--- Completion and Lsp Settings
-require("lsp.lsserver")
 require("config.preview")
 require("config.glow")
 
-require("lsp.handlers").setup()
+-- Completion and Lsp Settings
+require("lsp.lspconfig").setup()
 require("lsp.cmp")
 require("lsp.mason")
 require("lsp.null-ls")
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippet/"})

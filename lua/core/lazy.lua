@@ -78,7 +78,7 @@ require("lazy").setup{
     },
 
     -- Language Server
-    "simrat39/rust-tools.nvim", -- Rust
+    {"simrat39/rust-tools.nvim", dependencies = "nvim-lspconfig", ft = "rust"}, -- Rust
     "lervag/vimtex", -- LaTeX
     {"iamcco/markdown-preview.nvim", build = "cd app && npm install"},
     {"ellisonleao/glow.nvim", cmd = "Glow"},
