@@ -11,5 +11,8 @@ require("telescope").setup{
         layout_strategy = "horizontal",
         color_devicons = true,
         path_display = { "truncate" },
+        layout_config = {
+            prompt_position = "top",
+        },
     }
 }

@@ -19,7 +19,7 @@ local default = {
 
 local servers = vim.fn.has("Android") == 1 and default or vim.tbl_extend("force", default, add_server)
 
-require("lsp.servers")
+require("config.servers")
 
 require("mason").setup{
 	ui = {
@@ -47,8 +47,8 @@ local opts = {}
 for _, server in pairs(servers) do
 
 	opts = {
-		on_attach = require("lsp.lspconfig").on_attach,
-		capabilities = require("lsp.lspconfig").capabilities,
+		on_attach = require("config.lspconfig").on_attach,
+		capabilities = require("config.lspconfig").capabilities,
 	}
 
 	server = vim.split(server, "@")[1]

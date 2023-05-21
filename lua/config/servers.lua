@@ -4,6 +4,12 @@ if not status_lsp_ok then
 end
 
 -- requires manual compilation or installation in $PATH
+-- HTNL
+lspconfig.html.setup{
+    cmd = {"vscode-html-language-server"},
+}
+
+
 -- Clangd
 if vim.fn.executable('clangd') == 1 then
     lspconfig.clangd.setup{
@@ -25,8 +31,8 @@ end
 if vim.fn.executable('rust-analyzer') == 1 then
     require("rust-tools").setup{
         server = {
-            on_attach = require("lsp.lspconfig").on_attach,
-            capabilities = require("lsp.lspconfig").capabilities
+            on_attach = require("config.lspconfig").on_attach,
+            capabilities = require("config.lspconfig").capabilities
         }
     }
 end

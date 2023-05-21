@@ -26,8 +26,8 @@ require("config.preview")
 require("config.glow")
 
 -- Completion and Lsp Settings
-require("lsp.lspconfig").setup()
-require("lsp.cmp")
-require("lsp.mason")
-require("lsp.null-ls")
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippet/"})
+require("config.lspconfig").setup()
+require("config.cmp")
+require("config.mason")
+require("config.null-ls")
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snips/"})
