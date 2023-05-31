@@ -7,10 +7,11 @@ vim.g.vimtex_compiler_latexmk = {
 	executable = "latexmk",
 	build_dir = "output",
 	options = {
-		"-lualatex",
-		"-file-line-error",
-		"-synctex=1",
-		"-interaction=nonstopmode",
+		"--pdflatex",
+        "--shell-escape",
+		"--file-line-error",
+		"--synctex=1",
+		"--interaction=nonstopmode",
 	},
 }
 

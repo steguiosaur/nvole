@@ -1,68 +1,65 @@
-local o = vim.o -- set options
+local options = {
+    number          = true,     -- show numberline
+    relativenumber  = true,     -- relative numberline
 
----------- OPTIONS
--- numberline
-o.number = true         -- show numberline
-o.relativenumber = true -- relative numberline
+    -- tab options
+    expandtab       = true,     -- enables space for tabs
+    tabstop         = 4,        -- number of spaces in a tab
+    softtabstop     = 4,        -- number of spaces per <Tab> and <Backspace>
+    autoindent      = false,    -- copy indent from previous line
+    shiftwidth      = 4,        -- space for indentation
 
--- tab options
-o.expandtab = true -- enables space for tabs
-o.tabstop = 4      -- number of spaces in a tab
-o.softtabstop = 4  -- number of spaces per <Tab> and <Backspace>
+    -- word search/highlighting
+    hlsearch        = true,     -- highlight searched words
+    incsearch       = true,     -- show search current matched patterns
+    ignorecase      = true,     -- case insensitive search
+    smartcase       = true,     -- override "ignorecase" when upper case is in pattern
+    cursorline      = true,     -- highlight current cursor line
+    showmatch       = true,     -- show matching parenthesis and brackets
 
-o.autoindent = false -- copy indent from previous line
-o.shiftwidth = 4 -- space for indentation
+    -- text display formatting
+    wrap            = true,     -- wrap lines extending the window
+    breakindent     = true,     -- linebreak follows indentation
+    breakat         = " ^!@*-+;:,./?", -- linebreakable characters
+    linebreak       = true,     -- break long lines in "breakat"
+    conceallevel    = 0,        -- reveal syntax on Markdown files
+    fileencoding    = "utf-8",  -- file encoding in buffer
+    textwidth       = 0,        -- no string limitation
+    shortmess       = 'c',      -- shorten message prompts
 
--- word search/highlighting
-o.hlsearch = true   -- highlight searched words
-o.incsearch = true  -- show search current matched patterns
-o.ignorecase = true -- case insensitive search
-o.smartcase = true  -- override "ignorecase" when upper case is in pattern
+    -- navigation
+    scrolloff       = 5,        -- lines above and below cursor
+    mouse           = 'a',      -- mouse support
 
-o.cursorline = true -- highlight current cursor line
-o.showmatch = true  -- show matching parenthesis and brackets
+    -- statusline and commandline
+    laststatus      = 2,        -- last window statusline enable
+    showmode        = false,    -- show current mode
+    showtabline     = 1,        -- shows tabline
+    signcolumn      = "yes",    -- shows signcolumn
+    modeline        = true,     -- file specific options on comments
+    clipboard       = "unnamedplus", -- connect to system clipboard
+    confirm         = true,     -- confirm on exit
 
--- text display formatting
-o.wrap = true               -- wrap lines extending the window
-o.breakindent = true        -- linebreak follows indentation
-o.breakat = " ^!@*-+;:,./?" -- linebreakable characters
-o.linebreak = true          -- break long lines in "breakat"
+    -- commandline completion
+    wildmenu        = true,     -- command completion on <Tab>
+    wildmode        = "longest,full", -- event on <Tab>
+    wildignore      = "*.o, *.docx, *.pdf, *.jpg, *.png, *.gif, *.img",
 
-o.conceallevel = 0          -- reveal syntax on Markdown files
-o.fileencoding = "utf-8"    -- file encoding in buffer
-o.textwidth = 0             -- no string limitation
-o.shortmess = 'c'           -- shorten message prompts
+    -- etc
+    termguicolors   = true,     -- enable 24-bit RGB color in the TUI
+    hidden          = true,     -- hide current unsaved edited file on :e instead of exiting
+    title           = true,     -- show filename and directory on titlestring
+    undofile        = true,     -- persistent undo
+    pumheight       = 10,
+    swapfile        = false,    -- swapfiles for recovery
+    updatetime      = 250,
+}
 
--- navigation
-o.scrolloff = 5 -- lines above and below cursor
-o.mouse = 'a'   -- mouse support
+for k, v in pairs(options) do
+    vim.opt[k] = v
+end
 
--- statusline and commandline
-o.laststatus = 2            -- last window statusline enable
-o.showmode = false          -- show current mode
-o.showtabline = 1           -- shows tabline
-o.signcolumn = "yes"        -- shows signcolumn
-
-o.modeline = true           -- file specific options on comments
-o.clipboard = "unnamedplus" -- connect to system clipboard
-o.confirm = true            -- confirm on exit
-
--- commandline completion
-o.wildmenu = true           -- command completion on <Tab>
-o.wildmode = "longest,full" -- event on <Tab>
-o.wildignore = "*.o, *.docx, *.pdf, *.jpg, *.png, *.gif, *.img"
-
--- etc
-o.termguicolors = true -- enable 24-bit RGB color in the TUI
-o.hidden = true        -- hide current unsaved edited file on :e instead of exiting
-o.title = true         -- show filename and directory on titlestring
-o.undofile = true      -- persistent undo
-o.pumheight = 10
-o.swapfile = false     -- swapfiles for recovery
-o.updatetime = 250
-
-
----------- GLOBAL & AUTOCMD
+---- GLOBAL & AUTOCMD
 if vim.fn.has("Android") == 1 then
     vim.g.python3_host_prog = '$PREFIX/bin/python'
     vim.g.python_host_prog = '$PREFIX/bin/python2'

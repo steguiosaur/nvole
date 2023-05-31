@@ -30,4 +30,5 @@ require("config.lspconfig").setup()
 require("config.cmp")
 require("config.mason")
 require("config.null-ls")
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snips/"})
+
+require("snippets.all")

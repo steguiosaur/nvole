@@ -1,28 +1,51 @@
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-
--- Shortened function name
+local silent = { silent = true }
 local keymap = vim.keymap.set
 
----------- KEYMAPS
--- <Space> as mapleader
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---  normal_mode = "n"
---  insert_mode = "i"
---  visual_mode = "v"
---  visual_block_mode = "x"
---  term_mode = "t"
---  command_mode = "c"
 
----------- NORMAL MODE
+---- LINE NAVIGATION
 -- line navigation on linebreak
 keymap("n", "<S-j>", "}", opts)
 keymap("n", "<S-k>", "{", opts)
+keymap("v", "<S-j>", "}", opts)
+keymap("v", "<S-k>", "{", opts)
 
+
+-- insert mode navigation
+keymap('i', '<C-h>', '<C-o>h', opts)
+keymap('i', '<C-j>', '<C-o>j', opts)
+keymap('i', '<C-k>', '<C-o>k', opts)
+keymap('i', '<C-l>', '<C-o>l', opts)
+
+
+---- TEXT CONTROLS
+-- word count
+keymap("n", "<C-g>", "g<C-g>", opts)
+
+-- move text up and down
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)
+keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+keymap("i", "<A-j>", "<ESC>:m .+1<CR>==gi", opts)
+keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+
+keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+keymap("n", "<leader>gs", vim.cmd.Git)
+
+-- indent mode on (while holding <Shift>)
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+
+-- disable yank on paste
+keymap("v", "p", '"_dP', opts)
+
+
+---- WINDOW CONTROLS
 -- vertical and horizontal window
 keymap("n", "<leader>v", "<C-w>v", opts)
 keymap("n", "<leader>h", "<C-w>s", opts)
@@ -50,9 +73,10 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-q>", ":bw<CR>", opts)
 
--- move text up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
+
+---- ADDITIONAL KEYMAPS
+-- fast <ESC>
+keymap("i", "jj", "<ESC>", opts)
 
 -- save and quit
 keymap("n", "<leader>q", ":q<CR>", opts)
@@ -62,47 +86,10 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
 
 -- word count
-keymap("n", "<C-g>", "g<C-g>", opts)
-
-keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-keymap("n", "<leader>gs", vim.cmd.Git)
-
----------- INSERT MODE
--- fast <ESC>
-keymap("i", "jj", "<ESC>", opts)
-
--- insert mode navigation
-keymap('i', '<C-h>', '<C-o>h', opts)
-keymap('i', '<C-j>', '<C-o>j', opts)
-keymap('i', '<C-k>', '<C-o>k', opts)
-keymap('i', '<C-l>', '<C-o>l', opts)
-
--- move text up and down
-keymap("i", "<A-j>", "<ESC>:m .+1<CR>==gi", opts)
-keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
-
-
----------- VISUAL MODE
--- line navigation on visual linebreak
-keymap("v", "<S-j>", "}", opts)
-keymap("v", "<S-k>", "{", opts)
-
--- indent mode on (while holding <Shift>)
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
--- move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-
--- disable yank on paste
-keymap("v", "p", '"_dP', opts)
-
--- word count
 keymap("v", "<C-g>", "g<C-g>", opts)
 
 
----------- PLUGIN MAPPINGS
+---- PLUGIN MAPPINGS
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
@@ -131,10 +118,10 @@ keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 -- ToggleTerm
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
 
-keymap('t', '<esc>', [[<C-\><C-n>]], term_opts)
-keymap('t', 'jk', [[<C-\><C-n>]], term_opts)
-keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], term_opts)
-keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], term_opts)
-keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], term_opts)
-keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], term_opts)
-keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], term_opts)
+keymap('t', '<esc>', [[<C-\><C-n>]], silent)
+keymap('t', 'jk', [[<C-\><C-n>]], silent)
+keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], silent)
+keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], silent)
+keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], silent)
+keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], silent)
+keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], silent)
