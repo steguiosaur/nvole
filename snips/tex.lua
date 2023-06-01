@@ -15,16 +15,27 @@ return {
         t("\\textbf{"), i(1), t("}"),
     }),
 
-    -- Hyperlink Reference
-    s({trig="href", dscr="The hyperref package's href{}{} command (for url links)"},
-        fmta(
-            [[\href{<>}{<>}]],
-            {
-                i(1, "url"),
-                i(2, "name"),
-            }
-        )
+    -- Image
+    s({trig="img", dscr="Require 'graphicx' package"}, {
+        t("\\noindent\\includegraphics[width=\\textwidth]{"), i(1, "image_path"), t("}"),
+    }),
+
+    -- Figure
+    s({trig="fig", dscr="Centered figure"},
+        {
+            t({ "\\begin{figure}[hbt!]",
+                "   \\center"}),
+            t({ "", "   \\noindent\\includegraphics[width=\\textwidth]{"}), i(1, "image_path"), t("}"),
+            t({ "", "   \\caption{"}), i(2, "caption"), t("}"),
+            t({ "", "   \\label{fig:"}), i(3, "figure"), t("}"),
+            t({ "", "\\end{figure}"}),
+        }
     ),
+
+    -- Hyperlink Reference
+    s({trig="href", dscr="The hyperref package's href{}{} command (for url links)"}, {
+        t("\\href{"), i(1, "url"), t("}{"), i(2, "title"), t("}")
+    }),
 
     -- Enumerate
     s({trig="enum", dscr="A LaTeX enumerate environment"},
@@ -43,6 +54,38 @@ return {
             t({ "", "\\end{itemize}"}),
         }
     ),
+
+    -- Tcolorbox
+    s({trig="box", dscr="Use 'tcolorbox' package in preamble"},
+        {
+            t({ "\\begin{tcolorbox}[title="}), i(0), t({"]",
+                "    "}),i(1),
+            t({ "", "\\end{tcolorbox}"}),
+        }
+    ),
+
+    -- Code Listings
+    s({trig="code", dscr="Code listings environment"},
+        {
+            t({ "\\begin{listings}[style=]",
+                "    "}),i(1),
+            t({ "", "\\end{listings}"}),
+        }
+    ),
+
+    -- Minipage
+    s({trig="mini", dscr="MiniPage environment"},
+        {
+            t({ "\\begin{minipage}[b]{.5\\textwidth}",
+                "    "}), i(1),
+            t({ "", "\\end{minipage}"}),
+            t({ "", "\\hfill"}),
+            t({ "", "\\begin{minipage}[b]{.4\\textwidth}",
+                "    "}), i(2),
+            t({ "", "\\end{minipage}"}),
+        }
+    ),
+
 
 
 -- MATH SNIPPETS
