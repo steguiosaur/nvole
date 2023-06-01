@@ -70,8 +70,8 @@ require("lazy").setup{
             "hrsh7th/cmp-path", -- path completions
             "hrsh7th/cmp-nvim-lsp", -- completion on lsp
             "hrsh7th/cmp-cmdline", -- cmdline completions
-
             "saadparwaiz1/cmp_luasnip", -- snippet completions
+
             "rafamadriz/friendly-snippets",
             "L3MON4D3/LuaSnip",
         },

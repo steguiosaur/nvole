@@ -31,4 +31,4 @@ require("config.cmp")
 require("config.mason")
 require("config.null-ls")
 
-require("snippets.all")
+require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/snips/"})

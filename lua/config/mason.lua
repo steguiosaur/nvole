@@ -37,12 +37,9 @@ require("mason-lspconfig").setup({
 })
 
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_ok then
-	return
-end
+if not lspconfig_ok then return end
 
 local opts = {}
-
 
 for _, server in pairs(servers) do
 

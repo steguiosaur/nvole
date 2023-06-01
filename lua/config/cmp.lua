@@ -1,17 +1,15 @@
--- Set up nvim-cmp.
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
+local cmp_ok, cmp = pcall(require, "cmp")
+local snip_ok, luasnip = pcall(require, "luasnip")
 
--- Set up LuaSnip.
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
+if not cmp_ok then return end
+if not snip_ok then return end
+
+luasnip.config.set_config {
+    enable_autosnippets = true,
+    store_selection_keys = "<Tab>",
+}
 
 require("luasnip/loaders/from_vscode").lazy_load()
-
 require("luasnip").filetype_extend("python", { "django" })
 
 local kind_icons = {
