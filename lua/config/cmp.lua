@@ -6,7 +6,7 @@ if not snip_ok then return end
 
 luasnip.config.set_config {
     enable_autosnippets = true,
-    store_selection_keys = "<Tab>",
+    --store_selection_keys = "<Tab>",
 }
 
 require("luasnip/loaders/from_vscode").lazy_load()
@@ -76,13 +76,11 @@ cmp.setup{
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif require("luasnip").expand_or_jumpable() then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-			else
-				fallback()
-			end
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
 		end, {
 			"i",
 			"s",
@@ -90,8 +88,6 @@ cmp.setup{
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif require("luasnip").jumpable(-1) then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 			else
 				fallback()
 			end

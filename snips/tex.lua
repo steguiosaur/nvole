@@ -15,6 +15,36 @@ return {
         t("\\textbf{"), i(1), t("}"),
     }),
 
+    -- Simple Preamble
+    s({trig="preamb", dscr="Basic LaTeX Preamble"},
+        {
+            t({"\\documentclass[12pt,a4paper]{article}"}),
+            t({"", "\\usepackage[utf8]{inputenc}"}),
+            t({"", "\\usepackage[T1]{fontenc}"}),
+            t({"", "\\usepackage[margin=0.7in]{geometry}"}),
+            t({"", "\\usepackage{enumitem}"}),
+            t({"", "\\usepackage{hyperref}"}),
+            t({"", "\\usepackage{amsmath}"}),
+            t({"", "\\usepackage{amssymb}"}),
+            t({"", "\\usepackage{tcolorbox}"}),
+            t({"", "\\tolerance=1"}),
+            t({"", "\\emergencystretch=\\maxdimen"}),
+            t({"", "\\hyphenpenalty=10000"}),
+            t({"", "\\hbadness=10000"}),
+            t({"", "\\pagestyle{empty}"}),
+        }
+    ),
+
+
+    -- Environment
+    s({trig="beg", dscr="LaTeX environment begin"},
+        {
+            t({ "\\begin{" }), i(1), t({"}"}),
+            t({ "", "    "}),i(0),
+            t({ "", "\\end{" }), rep(1), t({"}"}),
+        }
+    ),
+
     -- Image
     s({trig="img", dscr="Require 'graphicx' package"}, {
         t("\\noindent\\includegraphics[width=\\textwidth]{"), i(1, "image_path"), t("}"),
