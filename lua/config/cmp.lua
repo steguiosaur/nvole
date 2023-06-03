@@ -11,6 +11,7 @@ luasnip.config.set_config {
 
 require("luasnip/loaders/from_vscode").lazy_load()
 require("luasnip").filetype_extend("python", { "django" })
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 local kind_icons = {
 	Text = "",
