@@ -24,6 +24,7 @@ require("mason-lspconfig").setup({
         "jsonls",
         "pyright",
         "tsserver",
+        "marksman"
     },
     automatic_installation = {
         exclude = {
@@ -82,12 +83,16 @@ for _, server in ipairs({ "bashls", "pyright", "cmake", "html", "diagnosticls", 
     })
 end
 
-lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-    handlers = handlers,
-    on_attach = on_attach,
-    settings = require("lsp.servers.lua_ls").settings,
-})
+-- Requires manual installation for Termux
+-- Lua_ls
+if vim.fn.executable('lua-language-server') == 1 then
+    lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        handlers = handlers,
+        on_attach = on_attach,
+        settings = require("lsp.servers.lua_ls").settings,
+    })
+end
 
 -- Clangd
 if vim.fn.executable('clangd') == 1 then

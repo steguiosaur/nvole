@@ -1,3 +1,5 @@
+require('lspconfig.ui.windows').default_options.border = 'single'
+
 require('lsp-progress').setup({
     spinner = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
     client_format = function(client_name, spinner, series_messages)

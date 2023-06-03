@@ -3,9 +3,11 @@
 ## :gear: Features
 
 - Completion and diagnostics on several languages
-- Code formatter with `null-ls`
+- Code formatter with `prettier`
 - Preview LaTeX using Zathura
 - Preview Markdown, UML, etc. in default browser
+- Snippets with `LuaSnip`
+- Customized LaTeX snippets for quick math mode
 - Compatibility with Termux - Android terminal emulator
 
 ![Neovim with LaTeX](./nvim_latex.png) 
