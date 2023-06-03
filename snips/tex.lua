@@ -21,7 +21,7 @@ return {
             t({"\\documentclass[12pt,a4paper]{article}"}),
             t({"", "\\usepackage[utf8]{inputenc}"}),
             t({"", "\\usepackage[T1]{fontenc}"}),
-            t({"", "\\usepackage[margin=0.7in]{geometry}"}),
+            t({"", "\\usepackage[margin=0.5in]{geometry}"}),
             t({"", "\\usepackage{enumitem}"}),
             t({"", "\\usepackage{hyperref}"}),
             t({"", "\\usepackage{amsmath}"}),

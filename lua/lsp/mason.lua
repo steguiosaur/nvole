@@ -1,5 +1,5 @@
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-local rt_ok, rust_tools = pcall(require, "rust_tools")
+local rt_ok, rust_tools = pcall(require, "rust-tools")
 
 if not lspconfig_ok then return end
 
@@ -94,6 +94,17 @@ if vim.fn.executable('lua-language-server') == 1 then
     })
 end
 
+-- LaTeX
+if vim.fn.executable('texlab') == 1 then
+    lspconfig.texlab.setup{
+        cmd = {"texlab"};
+        filetypes = { "tex", "plaintex", "bib" };
+        on_attach = on_attach,
+        capabilities = capabilities,
+        handlers = handlers,
+    }
+end
+
 -- Clangd
 if vim.fn.executable('clangd') == 1 then
     lspconfig.clangd.setup{
@@ -125,17 +136,6 @@ if vim.fn.executable('rust-analyzer') == 1 then
             }
         }
     end
-end
-
--- LaTeX
-if vim.fn.executable('texlab') == 1 then
-    lspconfig.texlab.setup{
-        cmd = {"texlab"};
-        filetypes = { "tex", "plaintex", "bib" };
-        on_attach = on_attach,
-        capabilities = capabilities,
-        handlers = handlers,
-    }
 end
 
 -- Zig Language Server
