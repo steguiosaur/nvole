@@ -9,9 +9,9 @@ luasnip.config.set_config {
     --store_selection_keys = "<Tab>",
 }
 
-require("luasnip/loaders/from_vscode").lazy_load()
 require("luasnip").filetype_extend("python", { "django" })
 require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 local kind_icons = {
 	Text = "",

@@ -27,14 +27,18 @@ return {
             t({"", "\\usepackage{amsmath}"}),
             t({"", "\\usepackage{amssymb}"}),
             t({"", "\\usepackage{tcolorbox}"}),
+            t({"", "\\usepackage{graphicx}"}),
+            t({"", "\\usepackage{listings}"}),
+            t({"", "\\usepackage{svg}"}),
+            t({"", "\\usepackage{adjustbox}"}),
             t({"", "\\tolerance=1"}),
             t({"", "\\emergencystretch=\\maxdimen"}),
             t({"", "\\hyphenpenalty=10000"}),
             t({"", "\\hbadness=10000"}),
             t({"", "\\pagestyle{empty}"}),
+            t({"", "\\graphicspath{{./images/}}"}),
         }
     ),
-
 
     -- Environment
     s({trig="beg", dscr="LaTeX environment begin"},
@@ -45,9 +49,13 @@ return {
         }
     ),
 
-    -- Image
-    s({trig="img", dscr="Require 'graphicx' package"}, {
+    -- Image & SVG
+    s({trig="img", dscr="Requires 'graphicx' package"}, {
         t("\\noindent\\includegraphics[width=\\textwidth]{"), i(1, "image_path"), t("}"),
+    }),
+
+    s({trig="svg", dscr="Requires 'svg' and 'adjustbox' package"}, {
+        t("\\adjustbox{width=\\textwidth}{\\includesvg{"), i(1, "svg_path"), t("}"),
     }),
 
     -- Figure
@@ -95,11 +103,19 @@ return {
     ),
 
     -- Code Listings
-    s({trig="code", dscr="Code listings environment"},
+    s({trig="lst", dscr="Code listings environment"},
         {
             t({ "\\begin{listings}[style=]",
                 "    "}),i(1),
             t({ "", "\\end{listings}"}),
+        }
+    ),
+
+    s({trig="tbl", dscr="A LaTeX table environment"},
+        {
+            t({ "\\begin{tabular}{ c c }}",
+                "    "}),i(1),
+            t({ "", "\\end{tabular}"}),
         }
     ),
 

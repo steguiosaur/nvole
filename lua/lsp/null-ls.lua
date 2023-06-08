@@ -8,7 +8,13 @@ local fmt = null_ls.builtins.formatting
 null_ls.setup({
     debug = false,
     sources = {
-        fmt.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+        fmt.prettier.with({
+            extra_args = {
+                "--no-semi",
+                "--single-quote",
+                "--jsx-single-quote"
+            }
+        }),
         fmt.stylua,
         fmt.latexindent,
     },

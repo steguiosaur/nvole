@@ -1,5 +1,4 @@
 local npairs = require("nvim-autopairs")
-local Rule = require('nvim-autopairs.rule')
 
 -- change default fast_wrap
 npairs.setup({
