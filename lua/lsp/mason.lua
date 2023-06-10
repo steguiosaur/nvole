@@ -24,7 +24,6 @@ require("mason-lspconfig").setup({
         "jsonls",
         "pyright",
         "tsserver",
-        "marksman"
     },
     automatic_installation = {
         exclude = {
@@ -33,7 +32,7 @@ require("mason-lspconfig").setup({
             "lua_ls",
             "zls",
             "rust_analyzer",
-            "texlab"
+            "texlab",
         }
     },
 })

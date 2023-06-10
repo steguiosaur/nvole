@@ -62,6 +62,13 @@ require("lazy").setup{
     "williamboman/mason.nvim", -- LSP, dap, debugger installer
     "williamboman/mason-lspconfig.nvim", -- simple to use language server installer
     "jose-elias-alvarez/null-ls.nvim", -- LSP diagnostics and code actions
+    {"jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
+        }
+    },
 
     -- Completion plugins
     {"hrsh7th/nvim-cmp", -- The completion plugin

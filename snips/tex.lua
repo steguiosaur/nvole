@@ -55,7 +55,7 @@ return {
     }),
 
     s({trig="svg", dscr="Requires 'svg' and 'adjustbox' package"}, {
-        t("\\adjustbox{width=\\textwidth}{\\includesvg{"), i(1, "svg_path"), t("}"),
+        t("\\adjustbox{width=\\textwidth}{\\includesvg{"), i(1, "svg_path"), t("}}"),
     }),
 
     -- Figure
@@ -96,7 +96,7 @@ return {
     -- Tcolorbox
     s({trig="box", dscr="Use 'tcolorbox' package in preamble"},
         {
-            t({ "\\begin{tcolorbox}[title="}), i(0), t({"]",
+            t({ "\\begin{tcolorbox}[colback=white"}), i(0), t({"]",
                 "    "}),i(1),
             t({ "", "\\end{tcolorbox}"}),
         }
