@@ -74,7 +74,7 @@ lspconfig.tsserver.setup({
     settings = require("lsp.servers.tsserver").settings,
 })
 
-for _, server in ipairs({ "bashls", "pyright", "cmake", "html", "diagnosticls", "marksman" }) do
+for _, server in ipairs({ "bashls", "pyright", "cmake", "html", "diagnosticls" }) do
     lspconfig[server].setup({
         on_attach = on_attach,
         capabilities = capabilities,
