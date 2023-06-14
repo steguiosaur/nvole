@@ -5,7 +5,7 @@ vim.g.vimtex_quickfix_mode = true
 vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_compiler_latexmk = {
 	executable = "latexmk",
-	build_dir = "output",
+	out_dir = "output",
 	options = {
 		"--pdflatex",
         "--shell-escape",

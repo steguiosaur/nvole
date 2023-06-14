@@ -124,12 +124,16 @@ keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
 
 keymap('t', '<esc>', [[<C-\><C-n>]], silent)
-keymap('t', 'jk', [[<C-\><C-n>]], silent)
+keymap('t', 'jj', [[<C-\><C-n>]], silent)
 keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], silent)
 keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], silent)
 keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], silent)
 keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], silent)
 keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], silent)
+
+-- Comment
+keymap('n', 'gc', '<Plug>(comment_toggle_linewise)')
+keymap('x', 'gc', '<Plug>(comment_toggle_linewise_visual)')
 
 -- LSP
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)

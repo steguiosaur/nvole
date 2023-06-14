@@ -1,1 +1,3 @@
-require("Comment").setup{}
+require("Comment").setup{
+    mappings = false,
+}
