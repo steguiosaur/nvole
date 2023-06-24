@@ -21,12 +21,15 @@ require("config.nvimtree")
 require("config.comment")
 require("config.trouble")
 require("config.toggleterm")
+require("config.whichkey")
 
 require("config.preview")
 require("config.glow")
 
--- Completion and Lsp Settings
+-- Diagnostics, Completion and Lsp Settings
 require("config.cmp")
 require("lsp.lspconfig").setup()
 require("lsp.mason")
 require("lsp.null-ls")
+require("config.dap")
+require("config.cmaketools")

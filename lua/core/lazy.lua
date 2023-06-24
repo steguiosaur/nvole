@@ -33,6 +33,7 @@ require("lazy").setup{
             "BlakeJC94/alpha-nvim-fortune"
         }
     },
+    "folke/which-key.nvim",
 
     -- Defaults
     "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
@@ -91,6 +92,11 @@ require("lazy").setup{
     {"ellisonleao/glow.nvim", cmd = "Glow"},
 
     -- Debugger
-    "mfussenegger/nvim-dap",
-
+    {"mfussenegger/nvim-dap",
+        dependencies = {
+            "theHamsta/nvim-dap-virtual-text",
+            "rcarriga/nvim-dap-ui",
+		},
+    },
+    { "Civitasv/cmake-tools.nvim" }, -- Cmake
 }

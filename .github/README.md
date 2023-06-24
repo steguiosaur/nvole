@@ -2,13 +2,16 @@
 
 ## :gear: Features
 
-- Diagnostics, Linters, Debugger
-- Code completion on Python, C, Cpp, LaTeX, etc. using `LuaSnip`
-- Code formatter using `prettier`, `latexindent`, and `stylua`
-- Preview LaTeX with document viewer `Zathura`
-- Preview Markdown, UML, etc. in default browser
-- Custom LaTeX snippets for quick math mode
-- Compatibility with Termux - Android terminal emulator
+- [x] Diagnostics, Linters, Debugger
+- [x] Code completion on Python, C, Cpp, LaTeX, etc. using `LuaSnip`
+- [x] Code formatter using `prettier`, `latexindent`, and `stylua`
+- [x] Preview LaTeX with document viewer `Zathura`
+- [x] Preview Markdown, UML, etc. in default browser
+- [x] Custom LaTeX snippets for quick math mode
+- [x] Compatibility with Termux - Android terminal emulator
+- [ ] Configure `nvim-dap`
+- [ ] `jdtls` for Java
+- [ ] `ltex-ls` for LaTeX grammar checker
 
 ![Neovim with LaTeX](./nvim_latex.png)
 
@@ -72,12 +75,10 @@ In some cases, the binary is not available on any package managers. The alternat
 option for this is to clone the language server repository and compile the said
 server before adding it to `$PATH`.
 
-If you are considering to move on a configuration that just works even on Android,
-you might want to visit this config even though it is rarely supported nowadays:
-
-- [steguiosaur/nvim](https://github.com/steguiosaur/nvim) - uses coc.nvim for
-managing language servers
-
 ### `latexindent` formatter not working
 
 Install `libxcrypt-compat` using the package manager. Termux compatibility not verified.
+
+### `telescope grep` not working
+
+Install `ripgrep`

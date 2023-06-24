@@ -1,9 +1,7 @@
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 local rt_ok, rust_tools = pcall(require, "rust-tools")
 
-if not lspconfig_ok then
-	return
-end
+if not lspconfig_ok then return end
 
 require("mason").setup({
 	ui = {
@@ -29,12 +27,12 @@ require("mason-lspconfig").setup({
 	},
 	automatic_installation = {
 		exclude = {
-			"typst_lsp",
 			"clangd",
 			"lua_ls",
-			"zls",
 			"rust_analyzer",
 			"texlab",
+			"typst_lsp",
+			"zls",
 		},
 	},
 })

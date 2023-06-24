@@ -4,13 +4,13 @@ if not null_ls_ok then return end
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-		"markdownlint",
-		--"ruff",
-		"mypy",
 		"cpplint",
+		"markdownlint",
+		"mypy",
 		"prettier",
-		--"stylua",
 		--"latexindent"
+		--"ruff",
+		--"stylua",
 	},
 })
 
@@ -29,7 +29,7 @@ null_ls.setup({
 		}),
 		fmt.stylua,
 		fmt.latexindent,
-		diagnostics.mypy,
+		--diagnostics.mypy,
 		--diagnostics.ruff,
 		diagnostics.markdownlint,
 		diagnostics.cpplint,

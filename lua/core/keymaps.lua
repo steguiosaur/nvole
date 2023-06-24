@@ -6,21 +6,19 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 ---- LINE NAVIGATION
--- line navigation on linebreak
-keymap("n", "<S-j>", "}", opts)
-keymap("n", "<S-k>", "{", opts)
-keymap("v", "<S-j>", "}", opts)
-keymap("v", "<S-k>", "{", opts)
+-- line navigation
+keymap({ "n", "v" }, "<S-j>", "}", opts)
+keymap({ "n", "v" }, "<S-k>", "{", opts)
 
+keymap({ "n", "v" }, "<S-n>", "<C-d>", opts)
+keymap({ "n", "v" }, "<S-m>", "<C-u>", opts)
 
 -- insert mode navigation
-keymap('i', '<C-h>', '<C-o>h', opts)
-keymap('i', '<C-j>', '<C-o>j', opts)
-keymap('i', '<C-k>', '<C-o>k', opts)
-keymap('i', '<C-l>', '<C-o>l', opts)
-
+keymap("i", "<C-h>", "<C-o>h", opts)
+keymap("i", "<C-j>", "<C-o>j", opts)
+keymap("i", "<C-k>", "<C-o>k", opts)
+keymap("i", "<C-l>", "<C-o>l", opts)
 
 ---- TEXT CONTROLS
 -- word count
@@ -43,7 +41,6 @@ keymap("v", ">", ">gv", opts)
 
 -- disable yank on paste
 keymap("v", "p", '"_dP', opts)
-
 
 ---- WINDOW CONTROLS
 -- vertical and horizontal window
@@ -72,7 +69,6 @@ keymap("n", "<C-S-Right>", "<C-w><S-l>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-q>", ":bw<CR>", opts)
-
 
 ---- ADDITIONAL KEYMAPS
 -- fast <ESC>
@@ -123,17 +119,17 @@ keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 -- ToggleTerm
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
 
-keymap('t', '<esc>', [[<C-\><C-n>]], silent)
-keymap('t', 'jj', [[<C-\><C-n>]], silent)
-keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], silent)
-keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], silent)
-keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], silent)
-keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], silent)
-keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], silent)
+keymap("t", "<esc>", [[<C-\><C-n>]], silent)
+keymap("t", "jj", [[<C-\><C-n>]], silent)
+keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], silent)
+keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], silent)
+keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], silent)
+keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], silent)
+keymap("t", "<C-w>", [[<C-\><C-n><C-w>]], silent)
 
 -- Comment
-keymap('n', 'gc', '<Plug>(comment_toggle_linewise)')
-keymap('x', 'gc', '<Plug>(comment_toggle_linewise_visual)')
+keymap("n", "gc", "<Plug>(comment_toggle_linewise)")
+keymap("x", "gc", "<Plug>(comment_toggle_linewise_visual)")
 
 -- LSP
 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -151,3 +147,23 @@ keymap("n", "gb", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+-- Dap
+keymap("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>", opts)
+keymap("n", "<Leader>dc", "<CMD>lua require('dap').continue()<CR>", opts)
+keymap("n", "<Leader>dd", "<CMD>lua require('dap').continue()<CR>", opts)
+keymap("n", "<Leader>dh", "<CMD>lua require('dapui').eval()<CR>", opts)
+keymap("n", "<Leader>di", "<CMD>lua require('dap').step_into()<CR>", opts)
+keymap("n", "<Leader>do", "<CMD>lua require('dap').step_out()<CR>", opts)
+keymap("n", "<Leader>dO", "<CMD>lua require('dap').step_over()<CR>", opts)
+keymap("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", opts)
+keymap("n", "<Leader>dC", "<CMD>lua require('dapui').close()<CR>", opts)
+
+keymap("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
+keymap("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
+keymap("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
+
+-- Vim CMake
+keymap("n", "<Leader>cg", "<cmd>CMakeGenerate<CR>")
+keymap("n", "<Leader>cb", "<cmd>CMakeBuild<CR>")
+keymap("n", "<Leader>cq", "<cmd>CMakeClose<CR>")
