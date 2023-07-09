@@ -96,6 +96,7 @@ require("lazy").setup{
         dependencies = {
             "theHamsta/nvim-dap-virtual-text",
             "rcarriga/nvim-dap-ui",
+            "jay-babu/mason-nvim-dap.nvim",
 		},
     },
     { "Civitasv/cmake-tools.nvim" }, -- Cmake

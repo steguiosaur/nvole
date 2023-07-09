@@ -107,6 +107,7 @@ end
 -- Clangd
 if vim.fn.executable("clangd") == 1 then
 	lspconfig.clangd.setup({
+        cmd = { "clangd", "--compile-commands-dir=build" },
 		on_attach = on_attach,
 		capabilities = capabilities,
 		handlers = handlers,

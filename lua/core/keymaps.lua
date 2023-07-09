@@ -166,4 +166,5 @@ keymap("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { ent
 -- Vim CMake
 keymap("n", "<Leader>cg", "<cmd>CMakeGenerate<CR>")
 keymap("n", "<Leader>cb", "<cmd>CMakeBuild<CR>")
+keymap("n", "<Leader>cc", "<cmd>CMakeClean<CR>")
 keymap("n", "<Leader>cq", "<cmd>CMakeClose<CR>")

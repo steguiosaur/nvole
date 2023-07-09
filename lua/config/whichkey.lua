@@ -1,10 +1,10 @@
-local wk_ok, whickkey = pcall(require, "which-key")
+local wk_ok, whichkey = pcall(require, "which-key")
 
 if not wk_ok then
     return
 end
 
-whickkey.setup({
+whichkey.setup({
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -56,9 +56,6 @@ whickkey.setup({
     -- triggers = "auto", -- automatically setup triggers
     --triggers = { "<leader>" }, -- or specify a list manually
     triggers_blacklist = {
-        -- list of mode / prefixes that should never be hooked by WhichKey
-        -- this is mostly relevant for key maps that start with a native binding
-        -- most people should not need to change this
         i = { "j", "k" },
         v = { "j", "k" },
     },
