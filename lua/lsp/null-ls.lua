@@ -20,6 +20,8 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	debug = false,
 	sources = {
+		diagnostics.cpplint,
+		diagnostics.markdownlint,
 		fmt.prettier.with({
 			extra_args = {
 				"--no-semi",
@@ -31,8 +33,6 @@ null_ls.setup({
 		fmt.latexindent,
 		--diagnostics.mypy,
 		--diagnostics.ruff,
-		diagnostics.markdownlint,
-		diagnostics.cpplint,
 	},
 })
 

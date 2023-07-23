@@ -5,6 +5,7 @@ require('nvim-treesitter.configs').setup {
         "cmake",
         "cpp",
         "lua",
+        "markdown",
         "java",
         "rust",
         "javascript",
