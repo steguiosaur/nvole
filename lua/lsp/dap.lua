@@ -6,9 +6,11 @@ if not dap_ok and dapui_ok and dapvt_ok then
 	return
 end
 
-require("mason-nvim-dap").setup({
-	ensure_installed = { "codelldb" },
-})
+if vim.fn.has("Android") == 0 then
+    require("mason-nvim-dap").setup({
+        ensure_installed = { "codelldb" },
+    })
+end
 
 dapvt.setup({
 	enabled = true,
