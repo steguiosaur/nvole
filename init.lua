@@ -33,3 +33,5 @@ require("lsp.mason")
 require("lsp.null-ls")
 require("lsp.dap")
 require("lsp.cmaketools")
+
+require("config.codeium")

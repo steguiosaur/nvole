@@ -17,6 +17,7 @@ require('nvim-treesitter.configs').setup {
     },
     highlight = {
         enable = true,
+        disable = {"tex"},
         use_languagetree = true,
     },
     indent = { enable = true },

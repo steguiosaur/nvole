@@ -84,6 +84,7 @@ require("lazy").setup{
             "L3MON4D3/LuaSnip",
         },
     },
+    "Exafunction/codeium.vim",
 
     -- Language Server
     {"simrat39/rust-tools.nvim", dependencies = "nvim-lspconfig", ft = "rust"}, -- Rust
