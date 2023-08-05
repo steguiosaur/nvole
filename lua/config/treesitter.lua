@@ -13,6 +13,7 @@ require('nvim-treesitter.configs').setup {
         "python",
         "latex",
         "lua",
+        "zig",
         "bash"
     },
     highlight = {
