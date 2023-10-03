@@ -74,6 +74,14 @@ lspconfig.tsserver.setup({
 	settings = require("lsp.servers.tsserver").settings,
 })
 
+lspconfig.asm_lsp.setup({
+    cmd = {"asm-lsp"},
+	filetypes = { "s", "S", "asm" },
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+})
+
 for _, server in ipairs({ "bashls", "pyright", "cmake", "html", "diagnosticls" }) do
 	lspconfig[server].setup({
 		on_attach = on_attach,
@@ -131,7 +139,6 @@ end
 if vim.fn.executable("zls") == 1 then
 	lspconfig.zls.setup({
 		cmd = { "zls" },
-		filetypes = { "zig", "zir" },
 		on_attach = on_attach,
 		capabilities = capabilities,
 		handlers = handlers,

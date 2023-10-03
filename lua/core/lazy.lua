@@ -45,7 +45,7 @@ require("lazy").setup{
 
     -- Syntax
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-    "lukas-reineke/indent-blankline.nvim",
+    {"lukas-reineke/indent-blankline.nvim", main = "ibl"},
     "windwp/nvim-autopairs", -- autopair brackets and parenthesis
 
     -- Git
@@ -84,9 +84,9 @@ require("lazy").setup{
             "L3MON4D3/LuaSnip",
         },
     },
-    {"Exafunction/codeium.vim",
-        enabled = function() return vim.fn.has("Android") == 0 end
-    },
+    -- {"Exafunction/codeium.vim",
+    --    enabled = function() return vim.fn.has("Android") == 0 end
+    -- },
 
 
     -- Language Server

@@ -25,7 +25,7 @@ local options = {
     conceallevel    = 0,        -- reveal syntax on Markdown files
     fileencoding    = "utf-8",  -- file encoding in buffer
     textwidth       = 100,        -- no string limitation
-    shortmess       = 'c',      -- shorten message prompts
+    shortmess       = 'a',      -- shorten message prompts
 
     -- navigation
     scrolloff       = 5,        -- lines above and below cursor
@@ -69,3 +69,6 @@ else
     -- vertical help buffer
     vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
 end
+
+-- Set NeoVim's temporary directory to the system's default
+vim.o.directory = vim.fn.getenv('TMPDIR')

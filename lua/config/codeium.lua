@@ -1,6 +1,6 @@
-if vim.fn.has("Android") == 1 then
-	return
-end
+-- if vim.fn.has("Android") == 1 then
+-- 	return
+-- end
 
 vim.g.codeium_disable_bindings = 1
 
