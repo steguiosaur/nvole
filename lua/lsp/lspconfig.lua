@@ -34,7 +34,8 @@ M.setup = function()
         },
     }
 
-    vim.cmd([[au CursorHold * lua vim.diagnostic.open_float(0,{scope = "cursor"})]])
+    vim.fn.execute("au CursorHold * lua vim.diagnostic.open_float(0, { scope = 'cursor' })", true)
+
 end
 
 return M

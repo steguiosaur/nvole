@@ -21,9 +21,11 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"diagnosticls",
 		"html",
+		"jdtls",
 		"jsonls",
 		"pyright",
 		"tsserver",
+		"zls",
 	},
 	automatic_installation = {
 		exclude = {
@@ -32,7 +34,6 @@ require("mason-lspconfig").setup({
 			"rust_analyzer",
 			"texlab",
 			"typst_lsp",
-			"zls",
 		},
 	},
 })
@@ -77,6 +78,13 @@ lspconfig.tsserver.setup({
 lspconfig.asm_lsp.setup({
     cmd = {"asm-lsp"},
 	filetypes = { "s", "S", "asm" },
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+})
+
+lspconfig.jdtls.setup({
+	filetypes = { "java" },
 	capabilities = capabilities,
 	handlers = handlers,
 	on_attach = on_attach,

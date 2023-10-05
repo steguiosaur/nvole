@@ -25,7 +25,7 @@ local options = {
     conceallevel    = 0,        -- reveal syntax on Markdown files
     fileencoding    = "utf-8",  -- file encoding in buffer
     textwidth       = 100,        -- no string limitation
-    shortmess       = 'a',      -- shorten message prompts
+    shortmess = vim.o.shortmess .. 'af',
 
     -- navigation
     scrolloff       = 5,        -- lines above and below cursor
