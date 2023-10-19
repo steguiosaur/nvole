@@ -9,9 +9,9 @@
 - [x] Preview Markdown, UML, etc. in default browser
 - [x] Custom LaTeX snippets for quick math mode
 - [x] Compatibility with Termux - Android terminal emulator
-- [ ] Configure `nvim-dap`
-- [ ] `jdtls` for Java
-- [ ] `ltex-ls` for LaTeX grammar checker
+- [x] Configure `nvim-dap`
+- [x] `jdtls` for Java
+- [x] `ltex-ls` for LaTeX grammar checker
 
 ![Neovim with LaTeX](./nvim_latex.png)
 
@@ -60,7 +60,7 @@ To disable, goto `~/.config/nvim/lua/lsp/mason.lua` and edit the listed servers.
 
 Add the installed server on `ensure_installed` table on `~/.config/nvim/lua/lsp/mason.lua`.
 
-## Troubleshoot
+## :nut_and_bolt: Troubleshoot
 
 ### Mason ERROR Log: `Current platform is unsupported` in Termux
 

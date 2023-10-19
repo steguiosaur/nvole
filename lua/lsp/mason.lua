@@ -26,6 +26,9 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"tsserver",
 		"zls",
+		"kotlin_language_server",
+		"groovyls",
+		"ltex",
 	},
 	automatic_installation = {
 		exclude = {
@@ -85,6 +88,25 @@ lspconfig.asm_lsp.setup({
 
 lspconfig.jdtls.setup({
 	filetypes = { "java" },
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+})
+
+lspconfig.ltex.setup({
+	filetypes = { "tex", "md" },
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+})
+
+lspconfig.kotlin_language_server.setup({
+	capabilities = capabilities,
+	handlers = handlers,
+	on_attach = on_attach,
+})
+
+lspconfig.groovyls.setup({
 	capabilities = capabilities,
 	handlers = handlers,
 	on_attach = on_attach,

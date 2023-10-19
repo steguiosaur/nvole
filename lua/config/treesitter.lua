@@ -14,7 +14,9 @@ require('nvim-treesitter.configs').setup {
         "latex",
         "lua",
         "zig",
-        "bash"
+        "bash",
+        "kotlin",
+        "groovy"
     },
     highlight = {
         enable = true,

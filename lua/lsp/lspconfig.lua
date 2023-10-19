@@ -9,7 +9,12 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 M.capabilities.offsetEncoding = { "utf-8" }
 
 M.setup = function()
-    local signs = { Error = "✘", Warn = " ", Hint = "", Info = "" }
+    local signs = {
+        Error = "✘",
+        Warn = " ",
+        Hint = "",
+        Info = ""
+    }
 
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
