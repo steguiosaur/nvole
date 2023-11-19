@@ -41,7 +41,7 @@ require("lazy").setup{
 
     -- File Management
     {"nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons"},
-    {"nvim-telescope/telescope.nvim", tag = "0.1.1", dependencies = "nvim-lua/plenary.nvim"},
+    {"nvim-telescope/telescope.nvim", tag = "0.1.4", dependencies = "nvim-lua/plenary.nvim"},
 
     -- Syntax
     {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
