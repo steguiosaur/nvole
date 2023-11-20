@@ -2,8 +2,8 @@
 
 ## :gear: Features
 
-- [x] Diagnostics, Linters, Debugger
-- [x] Code completion on Python, C, Cpp, LaTeX, etc. using `LuaSnip`
+- [x] Diagnostics, Linters, Debuggers, Formatters
+- [x] Code completion on Python, C, Cpp, LaTeX, etc. using `nvim-cmp`
 - [x] Code formatter using `prettier`, `latexindent`, and `stylua`
 - [x] Preview LaTeX with document viewer `Zathura`
 - [x] Preview Markdown, UML, etc. in default browser
@@ -43,7 +43,7 @@ git clone https://github.com/steguiosaur/nvole.git ~/.config/nvim
 Install plugins by running `nvim` in the terminal. It will automatically install
 the package manager on initial startup. Type `Lazy install` in command mode to
 install plugins. Restore repository default version of plugins with `Lazy restore`.
-> Plugins listed at `~/.config/nvim/lua/core/lazy.lua`
+> Plugins listed at `~/.config/nvim/lua/nvole/core/lazy.lua`
 
 ```shell
 :Lazy restore
@@ -56,9 +56,9 @@ Language Server configurations. To install language servers, type `:Mason` in co
 mode and look for the language server that suits your needs.
 
 > There were several Language Servers that will automatically install.
-To disable, goto `~/.config/nvim/lua/lsp/mason.lua` and edit the listed servers.
+To disable, goto `~/.config/nvim/lua/nvole/plugins/lsp/lspconfig.lua` and edit the listed servers.
 
-Add the installed server on `ensure_installed` table on `~/.config/nvim/lua/lsp/mason.lua`.
+Add the installed server on `ensure_installed` table on `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua`.
 
 ## :nut_and_bolt: Troubleshoot
 
