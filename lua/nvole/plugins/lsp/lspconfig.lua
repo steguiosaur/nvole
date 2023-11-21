@@ -3,6 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
+        "nvim-tree/nvim-tree.lua",
         { "antosha417/nvim-lsp-file-operations", config = true },
         "simrat39/rust-tools.nvim",
     },

@@ -18,7 +18,7 @@ return {
                         ) .. " " .. spinner .. " " .. "[" .. client_name .. "]" )
                     or nil
             end,
-            format = function(client_messages, client_name)
+            format = function(client_messages)
                 local sign = " LSP" -- nf-fa-gear \uf013
                 return #client_messages > 0
                         and (" " .. table.concat(client_messages, " " .. sign))
@@ -31,8 +31,11 @@ return {
 
         -- Lualine
         require('lualine').setup{
-            options = { theme = 'nightfly' },
-            section_separators = { left = '|', right = '|'},
+            options = {
+                theme = 'nightfly',
+                section_separators = { left = '', right = ''},
+                component_separators = { left = '|', right = '|'},
+            },
             sections = {
                 lualine_a = {'mode'},
                 lualine_b = {

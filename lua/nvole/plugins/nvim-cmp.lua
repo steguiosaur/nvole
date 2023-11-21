@@ -1,11 +1,11 @@
 return {
     "hrsh7th/nvim-cmp",
-    event = {"InsertEnter"},
+    event = { "InsertEnter" },
     dependencies = {
-        "hrsh7th/cmp-buffer", -- buffer completions
-        "hrsh7th/cmp-path", -- path completions
-        "hrsh7th/cmp-nvim-lsp", -- completion on lsp
-        "hrsh7th/cmp-cmdline", -- cmdline completions
+        "hrsh7th/cmp-buffer",       -- buffer completions
+        "hrsh7th/cmp-path",         -- path completions
+        "hrsh7th/cmp-nvim-lsp",     -- completion on lsp
+        "hrsh7th/cmp-cmdline",      -- cmdline completions
         "saadparwaiz1/cmp_luasnip", -- snippet completions
         "rafamadriz/friendly-snippets",
         "L3MON4D3/LuaSnip",
@@ -27,7 +27,7 @@ return {
         luasnip.filetype_extend("python", { "django" })
         require("luasnip.loaders.from_snipmate").lazy_load()
         require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/snips/"})
+        require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snips/" })
 
         local kind_icons = {
             Text = "",
@@ -57,7 +57,7 @@ return {
             TypeParameter = "",
         }
 
-        cmp.setup{
+        cmp.setup {
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body) -- For `luasnip` users.
