@@ -64,6 +64,7 @@ return {
                 "markdownlint", -- md linter
                 "cpplint",      -- c/cpp linter
                 "cmakelang",    -- cmake linter
+                "cmakelint",    -- cmake linter
             },
         })
     end,

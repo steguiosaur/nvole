@@ -1,12 +1,16 @@
 return {
     "ellisonleao/glow.nvim",
+    ft = { "markdown" },
     cmd = "Glow",
     config = function()
         require("glow").setup({
             border = "single",
             pager = false,
-            width_ratio = 0.7,
-            height_ratio = 0.7,
+            width_ratio = 0.9,
+            height_ratio = 0.85,
         })
+
+        vim.keymap.set("n", "<leader>lg", ":Glow<CR>", { noremap = true, silent = true })
+
     end,
 }
