@@ -11,6 +11,7 @@ return {
                 "cpp",
                 "lua",
                 "markdown",
+                "markdown_inline",
                 "java",
                 "rust",
                 "javascript",

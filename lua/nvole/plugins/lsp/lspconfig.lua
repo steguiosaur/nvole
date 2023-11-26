@@ -124,7 +124,7 @@ return {
         })
 
         lspconfig.ltex.setup({
-            filetypes = { "tex", "md" },
+            filetypes = { "tex", "markdown" },
             capabilities = capabilities,
             handlers = handlers,
             on_attach = on_attach,

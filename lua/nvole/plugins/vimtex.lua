@@ -18,5 +18,14 @@ return {
                 "--interaction=nonstopmode",
             },
         }
+
+        if vim.fn.has("Android") == 1 then
+            function OpenPdf()
+                local pdf_path = './output/' .. vim.fn.expand('%:t:r') .. '.pdf'
+                vim.fn.system('termux-open ' .. vim.fn.shellescape(pdf_path))
+            end
+            vim.keymap.set({ 'n', 'v'}, '<leader>lv', "<cmd>lua OpenPdf()<CR>", { noremap = true })
+        end
+
     end,
 }

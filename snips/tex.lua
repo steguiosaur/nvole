@@ -113,7 +113,7 @@ return {
 
     s({trig="tbl", dscr="A LaTeX table environment"},
         {
-            t({ "\\begin{tabular}{ c c }}",
+            t({ "\\begin{tabular}{ c c }",
                 "    "}),i(1),
             t({ "", "\\end{tabular}"}),
         }
