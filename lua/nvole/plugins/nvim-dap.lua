@@ -15,7 +15,11 @@ return {
         end
 
         require("mason-nvim-dap").setup({
-            ensure_installed = { "codelldb" },
+            ensure_installed = {
+                "cpptools",
+                "codelldb",
+                "debugpy",
+            },
         })
 
         local opts = { noremap = true, silent = true }
@@ -28,7 +32,7 @@ return {
         vim.keymap.set("n", "<Leader>di", "<CMD>lua require('dap').step_into()<CR>", opts)
         vim.keymap.set("n", "<Leader>do", "<CMD>lua require('dap').step_out()<CR>", opts)
         vim.keymap.set("n", "<Leader>dO", "<CMD>lua require('dap').step_over()<CR>", opts)
-        vim.keymap.set("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", opts)
+        vim.keymap.set("n", "<Leader>dq", "<CMD>lua require('dap').terminate()<CR>", opts)
         vim.keymap.set("n", "<Leader>dC", "<CMD>lua require('dapui').close()<CR>", opts)
 
         vim.keymap.set("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>",
@@ -48,10 +52,10 @@ return {
             all_references = false,
             filter_references_pattern = "<module",
             -- Experimental Features:
-            virt_text_pos = "eol",   -- position of virtual text, see `:h nvim_buf_set_extmark()`
-            all_frames = false,      -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
-            virt_lines = false,      -- show virtual lines instead of virtual text (will flicker!)
-            virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
+            virt_text_pos = "eol",
+            all_frames = false,
+            virt_lines = false,
+            virt_text_win_col = nil,
         })
 
         dapui.setup({
@@ -65,20 +69,10 @@ return {
                 repl = "r",
                 toggle = "t",
             },
-            -- Expand lines larger than the window
-            -- Requires >= 0.7
             expand_lines = vim.fn.has("nvim-0.7"),
-            -- Layouts define sections of the screen to place windows.
-            -- The position can be "left", "right", "top" or "bottom".
-            -- The size specifies the height/width depending on position. It can be an Int
-            -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-            -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-            -- Elements are the elements shown in the layout (in order).
-            -- Layouts are opened in order so that earlier layouts take priority in window sizing.
             layouts = {
                 {
                     elements = {
-                        -- Elements can be strings or table with id and size keys.
                         { id = "scopes", size = 0.25 },
                         "breakpoints",
                         "stacks",
@@ -115,18 +109,18 @@ return {
         dap.set_log_level("TRACE")
 
         -- Automatically open UI
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open()
-            -- shade.toggle()
-        end
-        dap.listeners.after.event_terminated["dapui_config"] = function()
-            dapui.close()
-            -- shade.toggle()
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close()
-            -- shade.toggle()
-        end
+        -- dap.listeners.after.event_initialized["dapui_config"] = function()
+        --     dapui.open()
+        --     -- shade.toggle()
+        -- end
+        -- dap.listeners.after.event_terminated["dapui_config"] = function()
+        --     dapui.close()
+        --     -- shade.toggle()
+        -- end
+        -- dap.listeners.before.event_exited["dapui_config"] = function()
+        --     dapui.close()
+        --     -- shade.toggle()
+        -- end
 
         -- Enable virtual text
         vim.g.dap_virtual_text = true
@@ -141,25 +135,31 @@ return {
             name = 'lldb'
         }
 
+        dap.adapters.cpptools = {
+            type = 'executable',
+            name = "cpptools",
+            command = 'OpenDebugAD7',
+            args = {},
+            attach = {
+                pidProperty = "processId",
+                pidSelect = "ask"
+            },
+        }
+
         -- Config
         dap.configurations.cpp = {
             {
                 name = 'Launch',
                 type = 'lldb',
                 request = 'launch',
-                program = function()
-                    return vim.fn.input(vim.fn.getcwd() .. '/', 'buildDebug')
-                end,
+                program = 'lldb-vscode',
                 cwd = '${workspaceFolder}',
-                -- program = "${file}",
-                -- cwd = "${fileDirname}/buildDebug",
-                stopOnEntry = false,
+                stopOnEntry = true,
                 args = {},
                 runInTerminal = false,
             },
         }
         dap.configurations.c = dap.configurations.cpp
         dap.configurations.rust = dap.configurations.cpp
-
     end,
 }

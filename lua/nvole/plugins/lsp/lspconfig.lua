@@ -83,7 +83,7 @@ return {
             keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
             keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
             keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-                        -- set up buffer keymaps, etc.
+            -- set up buffer keymaps, etc.
         end
 
         lspconfig.cssls.setup({
@@ -108,7 +108,7 @@ return {
         })
 
         lspconfig.asm_lsp.setup({
-            cmd = {"asm-lsp"},
+            cmd = { "asm-lsp" },
             filetypes = { "s", "S", "asm" },
             capabilities = capabilities,
             handlers = handlers,
@@ -175,7 +175,13 @@ return {
         -- Clangd
         if vim.fn.executable("clangd") == 1 then
             lspconfig.clangd.setup({
-                cmd = { "clangd", "--compile-commands-dir=build" },
+                cmd = {
+                    "clangd",
+                    "--compile-commands-dir=build",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--cross-file-rename",
+                },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 handlers = handlers,

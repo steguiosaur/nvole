@@ -72,3 +72,5 @@ end
 
 -- Set NeoVim's temporary directory to the system's default
 vim.o.directory = vim.fn.getenv('TMPDIR')
+
+vim.cmd("filetype plugin on")

@@ -3,13 +3,13 @@
 ## :gear: Features
 
 - [x] Diagnostics, Linters, Debuggers, Formatters
-- [x] Code completion on Python, C, Cpp, LaTeX, etc. using `nvim-cmp`
+- [x] Code completion on Python, C, C++, LaTeX, etc. using `nvim-cmp`
 - [x] Code formatter using `prettier`, `latexindent`, and `stylua`
 - [x] Preview LaTeX with document viewer `Zathura`
 - [x] Preview Markdown, UML, etc. in default browser
 - [x] Custom LaTeX snippets for quick math mode
 - [x] Compatibility with Termux - Android terminal emulator
-- [x] Configure `nvim-dap`
+- [x] Configured C/C++ debugger using `nvim-dap`
 - [x] `jdtls` for Java
 - [x] `ltex-ls` for LaTeX grammar checker
 
