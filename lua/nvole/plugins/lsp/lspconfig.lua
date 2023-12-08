@@ -177,10 +177,16 @@ return {
             lspconfig.clangd.setup({
                 cmd = {
                     "clangd",
-                    "--compile-commands-dir=build",
                     "--background-index",
+                    "--compile-commands-dir=build",
                     "--clang-tidy",
                     "--cross-file-rename",
+
+                    "--all-scopes-completion",
+                    "--completion-style=detailed",
+                    "--header-insertion-decorators",
+                    "--header-insertion=iwyu",
+                    "--pch-storage=memory",
                 },
                 on_attach = on_attach,
                 capabilities = capabilities,

@@ -12,7 +12,7 @@ return {
             svelte = { "eslint_d" },
             python = { "pylint" },
             -- c = { "cpplint" },
-            cpp = { "cpplint" },
+            -- cpp = { "cpplint" },
             markdown = { "markdownlint" },
             cmake = { "cmakelint" },
         }

@@ -104,23 +104,19 @@ return {
             },
         })
 
-
         -- DAP Setup
         dap.set_log_level("TRACE")
 
         -- Automatically open UI
-        -- dap.listeners.after.event_initialized["dapui_config"] = function()
-        --     dapui.open()
-        --     -- shade.toggle()
-        -- end
-        -- dap.listeners.after.event_terminated["dapui_config"] = function()
-        --     dapui.close()
-        --     -- shade.toggle()
-        -- end
-        -- dap.listeners.before.event_exited["dapui_config"] = function()
-        --     dapui.close()
-        --     -- shade.toggle()
-        -- end
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open()
+        end
+        dap.listeners.after.event_terminated["dapui_config"] = function()
+            dapui.close()
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close()
+        end
 
         -- Enable virtual text
         vim.g.dap_virtual_text = true
@@ -135,16 +131,26 @@ return {
             name = 'lldb'
         }
 
-        dap.adapters.cpptools = {
-            type = 'executable',
-            name = "cpptools",
-            command = 'OpenDebugAD7',
-            args = {},
-            attach = {
-                pidProperty = "processId",
-                pidSelect = "ask"
-            },
-        }
+        -- dap.adapters.codelldb = {
+        --     type = 'server',
+        --     host = '127.0.0.1',
+        --     port = 13000, -- 💀 Use the port printed out or specified with `--port`
+        --     executable = {
+        --         command = '~/.local/share/nvim/mason/packages/codelldb/codelldb',
+        --         args = { "--port", "13000" },
+        --     }
+        -- }
+        --
+        -- dap.adapters.cpptools = {
+        --     type = 'executable',
+        --     name = "cpptools",
+        --     command = 'OpenDebugAD7',
+        --     args = {},
+        --     attach = {
+        --         pidProperty = "processId",
+        --         pidSelect = "ask"
+        --     },
+        -- }
 
         -- Config
         dap.configurations.cpp = {
@@ -152,7 +158,9 @@ return {
                 name = 'Launch',
                 type = 'lldb',
                 request = 'launch',
-                program = 'lldb-vscode',
+                program = function()
+                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                end,
                 cwd = '${workspaceFolder}',
                 stopOnEntry = true,
                 args = {},

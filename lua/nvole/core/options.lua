@@ -24,7 +24,7 @@ local options = {
     linebreak       = true,     -- break long lines in "breakat"
     conceallevel    = 0,        -- reveal syntax on Markdown files
     fileencoding    = "utf-8",  -- file encoding in buffer
-    textwidth       = 100,        -- no string limitation
+    textwidth       = 80,        -- no string limitation
     shortmess = vim.o.shortmess .. 'af',
 
     -- navigation
