@@ -13,7 +13,7 @@ local options = {
     hlsearch        = true,     -- highlight searched words
     incsearch       = true,     -- show search current matched patterns
     ignorecase      = true,     -- case insensitive search
-    smartcase       = true,     -- override "ignorecase" when upper case is in pattern
+    smartcase       = true,     -- override "ignorecase" on upper case pattern
     cursorline      = true,     -- highlight current cursor line
     showmatch       = true,     -- show matching parenthesis and brackets
 
@@ -25,6 +25,7 @@ local options = {
     conceallevel    = 0,        -- reveal syntax on Markdown files
     fileencoding    = "utf-8",  -- file encoding in buffer
     textwidth       = 80,        -- no string limitation
+    colorcolumn     = "+0",
     shortmess = vim.o.shortmess .. 'af',
 
     -- navigation
@@ -47,7 +48,7 @@ local options = {
 
     -- etc
     termguicolors   = true,     -- enable 24-bit RGB color in the TUI
-    hidden          = true,     -- hide current unsaved edited file on :e instead of exiting
+    hidden          = true,     -- hide current unsaved edited file on :e
     title           = true,     -- show filename and directory on titlestring
     undofile        = true,     -- persistent undo
     pumheight       = 10,

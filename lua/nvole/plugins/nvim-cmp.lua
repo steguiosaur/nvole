@@ -73,7 +73,7 @@ return {
                 }),
                 completion = cmp.config.window.bordered({
                     border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-                    scrollbar = false,
+                    scrollbar = true,
                 }),
             },
             experimental = {
