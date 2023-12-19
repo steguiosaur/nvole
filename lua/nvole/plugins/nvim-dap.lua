@@ -16,8 +16,8 @@ return {
 
         require("mason-nvim-dap").setup({
             ensure_installed = {
-                "cpptools",
-                "codelldb",
+                -- "cpptools",
+                -- "codelldb",
                 "debugpy",
             },
         })
@@ -125,46 +125,25 @@ return {
         vim.fn.sign_define("DapStopped", { text = "S", texthl = "", linehl = "", numhl = "" })
 
         -- Adapters
-        dap.adapters.lldb = {
-            type = 'executable',
-            command = 'lldb-vscode',
-            name = 'lldb'
+        dap.adapters.gdb = {
+            type = "executable",
+            command = "gdb",
+            args = { "-i", "dap" }
         }
-
-        -- dap.adapters.codelldb = {
-        --     type = 'server',
-        --     host = '127.0.0.1',
-        --     port = 13000, -- 💀 Use the port printed out or specified with `--port`
-        --     executable = {
-        --         command = '~/.local/share/nvim/mason/packages/codelldb/codelldb',
-        --         args = { "--port", "13000" },
-        --     }
-        -- }
-        --
-        -- dap.adapters.cpptools = {
-        --     type = 'executable',
-        --     name = "cpptools",
-        --     command = 'OpenDebugAD7',
-        --     args = {},
-        --     attach = {
-        --         pidProperty = "processId",
-        --         pidSelect = "ask"
-        --     },
-        -- }
 
         -- Config
         dap.configurations.cpp = {
             {
                 name = 'Launch',
-                type = 'lldb',
+                type = 'gdb',
                 request = 'launch',
                 program = function()
                     return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
                 end,
                 cwd = '${workspaceFolder}',
-                stopOnEntry = true,
-                args = {},
-                runInTerminal = false,
+                -- stopOnEntry = false,
+                -- args = {},
+                -- runInTerminal = false,
             },
         }
         dap.configurations.c = dap.configurations.cpp
