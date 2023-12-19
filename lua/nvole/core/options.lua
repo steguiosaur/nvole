@@ -25,7 +25,7 @@ local options = {
     conceallevel    = 0,        -- reveal syntax on Markdown files
     fileencoding    = "utf-8",  -- file encoding in buffer
     textwidth       = 80,        -- no string limitation
-    colorcolumn     = "+0",
+    colorcolumn     = "+1",
     shortmess = vim.o.shortmess .. 'af',
 
     -- navigation
