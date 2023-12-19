@@ -86,8 +86,8 @@ return {
                 -- },
                 {
                     elements = {
-                        "stacks",
-                        "scopes",
+                        { id = "stacks", size = 0.25 },
+                        { id = "scopes", size = 0.75 },
                         -- "repl",
                         -- "console",
                     },
