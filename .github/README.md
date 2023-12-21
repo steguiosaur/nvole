@@ -2,16 +2,21 @@
 
 ## :gear: Features
 
-- [x] Diagnostics, Linters, Debuggers, Formatters
-- [x] Code completion on Python, C, C++, LaTeX, etc. using `nvim-cmp`
-- [x] Code formatter using `prettier`, `latexindent`, and `stylua`
-- [x] Preview LaTeX with document viewer `Zathura`
-- [x] Preview Markdown, UML, etc. in default browser
+- [x] Compatible configuration for Termux (Android terminal emulator)
+- [x] Edit LaTeX files with the help of `VimTex` and `Zathura` document viewer
 - [x] Custom LaTeX snippets for quick math mode
-- [x] Compatibility with Termux - Android terminal emulator
-- [x] Configured C/C++ debugger using `nvim-dap`
-- [x] `jdtls` for Java
-- [x] `ltex-ls` for LaTeX grammar checker
+- [x] Preview Markdown, UML, etc. in default browser with `markdown-preview`
+- [x] Code completion on Python, C, C++, LaTeX, etc. using `nvim-cmp`
+- [x] Built-in IDE-like functionality for several languages
+- [x] Language servers, Linters, Formatters, Debuggers, Build Tools
+  - ls:`clangd` lint:`clang-tidy` format:`clang-format` debug:`gdb` build:`cmake` for C and C++
+  - ls:`texlab` & `ltex-ls` format:`latexindent` for typesetting LaTeX
+  - ls:`rust-analyzer` build:`cargo` for Rust
+  - ls:`pyright` format:`black` for Python
+  - ls:`jdtls` build:`gradle` for Java
+  - ls:`zls` for Zig
+  - Et al.
+- [ ] Web development setup
 
 ![Neovim with LaTeX](./nvim_latex.png)
 
@@ -24,13 +29,13 @@ To get started, install git and neovim:
 > Debian based distribution
 
 ```shell
-apt install git neovim
+sudo apt install git neovim
 ```
 
 > Arch based distribution
 
 ```shell
-pacman -S git neovim
+sudo pacman -S git neovim
 ```
 
 Clone the repository to `$HOME/.config/nvim`:
@@ -43,7 +48,7 @@ git clone https://github.com/steguiosaur/nvole.git ~/.config/nvim
 Install plugins by running `nvim` in the terminal. It will automatically install
 the package manager on initial startup. Type `Lazy install` in command mode to
 install plugins. Restore repository default version of plugins with `Lazy restore`.
-> Plugins listed at `~/.config/nvim/lua/nvole/core/lazy.lua`
+> Plugins listed at `~/.config/nvim/lua/nvole/core/plugins/` folder.
 
 ```shell
 :Lazy restore
@@ -52,26 +57,26 @@ install plugins. Restore repository default version of plugins with `Lazy restor
 ### Language Server Installation
 
 This config uses [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) to manage
-Language Server configurations. To install language servers, type `:Mason` in command
+language server protocol. To install language servers, type `:Mason` in command
 mode and look for the language server that suits your needs.
 
-> There were several Language Servers that will automatically install.
-To disable, goto `~/.config/nvim/lua/nvole/plugins/lsp/lspconfig.lua` and edit the listed servers.
+> There will be several language servers which automatically install.
+Go to `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua` to edit or disable the listed servers.
 
-Add the installed server on `ensure_installed` table on `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua`.
+Add new servers in `~/.config/nvim/lua/nvole/plugins/lsp/lspconfig.lua`.
 
 ## :nut_and_bolt: Troubleshoot
 
 ### Mason ERROR Log: `Current platform is unsupported` in Termux
 
 The config does not guarantee several Language Server or other tooling to work on
-`aarch64` architecture. Manual server installation is needed to make LSP work.
+`ARM 64` architecture. Manual server installation is needed to make LSP work.
 We'll take `clangd` and `rust-analyzer` as an example:
 
-- Install `clangd` using node package manager (requires `nodejs`): `npm install clangd`
-- Install `rust-analyzer` using the built-in package manager: `apt install rust-analyzer`
+- Install `clangd` using node package manager (requires `nodejs`): `npm i -g clangd`
+- Install `rust-analyzer` using the built-in package manager: `sudo apt install rust-analyzer`
 
-In some cases, the binary is not available on any package managers. The alternative
+In some cases, the executable is not available on any package managers. The alternative
 option for this is to clone the language server repository and compile the said
 server before adding it to `$PATH`.
 

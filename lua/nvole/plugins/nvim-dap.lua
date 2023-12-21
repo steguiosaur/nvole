@@ -41,10 +41,9 @@ return {
         vim.keymap.set("n", "<Leader>d<space>", "<CMD>lua require('dapui').open()<CR>", opts)
         vim.keymap.set("n", "<Leader>dQ", "<CMD>lua require('dapui').close()<CR>", opts)
         vim.keymap.set("n", "<Leader>dh", "<CMD>lua require('dapui').eval()<CR>", opts)
-        vim.keymap.set("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true })<CR>", opts)
-        vim.keymap.set("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true })<CR>", opts)
-        vim.keymap.set("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true })<CR>", opts)
-
+        vim.keymap.set("n", "<Leader>dw", "<CMD>lua require('dapui').float_element('watches', { enter = true, position = center })<CR>", opts)
+        vim.keymap.set("n", "<Leader>ds", "<CMD>lua require('dapui').float_element('scopes', { enter = true, position = center })<CR>", opts)
+        vim.keymap.set("n", "<Leader>dr", "<CMD>lua require('dapui').float_element('repl', { enter = true, position = center })<CR>", opts)
 
         dapvt.setup({
             enabled = true,
@@ -55,9 +54,9 @@ return {
             commented = false,
             only_first_definition = true,
             all_references = false,
-            filter_references_pattern = "<module",
-            -- Experimental Features:
+            clear_on_continue = false,
             virt_text_pos = "eol",
+            -- Experimental Features:
             all_frames = false,
             virt_lines = false,
             virt_text_win_col = nil,
@@ -112,17 +111,6 @@ return {
         -- DAP Setup
         dap.set_log_level("TRACE")
 
-        -- Automatically open UI
-        -- dap.listeners.after.event_initialized["dapui_config"] = function()
-        --     dapui.open()
-        -- end
-        -- dap.listeners.after.event_terminated["dapui_config"] = function()
-        --     dapui.close()
-        -- end
-        -- dap.listeners.before.event_exited["dapui_config"] = function()
-        --     dapui.close()
-        -- end
-
         -- Enable virtual text
         vim.g.dap_virtual_text = true
 
@@ -137,7 +125,7 @@ return {
         }
 
         -- Config
-        dap.configurations.cpp = {
+        dap.configurations.c = {
             {
                 name = 'Launch',
                 type = 'gdb',
@@ -158,7 +146,7 @@ return {
                 runInTerminal = false,
             },
         }
-        dap.configurations.c = dap.configurations.cpp
-        dap.configurations.rust = dap.configurations.cpp
+        dap.configurations.cpp = dap.configurations.c
+        dap.configurations.rust = dap.configurations.c
     end,
 }

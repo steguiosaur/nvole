@@ -57,20 +57,21 @@ return {
         local handlers = {
             ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
                 silent = true,
-                border = "rounded",
+                border = "single",
             }),
             ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                border = "rounded",
+                border = "single",
             }),
         }
 
+        ---@diagnostic disable-next-line: unused-local
         local on_attach = function(client, bufnr)
             opts.buffer = bufnr
 
-            -- LSP
+            -- NVIM LSP KEYMAPS
             keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
             keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-            --keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+            keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
             keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
             keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
             --keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
@@ -83,58 +84,9 @@ return {
             keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
             keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
             keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-            -- set up buffer keymaps, etc.
         end
 
-        lspconfig.bashls.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.bashls").settings,
-        })
-
-        lspconfig.pyright.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.pyright").settings,
-        })
-
-        lspconfig.cmake.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.cmake").settings,
-        })
-
-        lspconfig.html.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.html").settings,
-        })
-
-        lspconfig.cssls.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.cssls").settings,
-        })
-
-        lspconfig.jsonls.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.jsonls").settings,
-        })
-
-        lspconfig.tsserver.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.tsserver").settings,
-        })
-
+        -- SYSTEMS / LOW LEVEL
         lspconfig.asm_lsp.setup({
             cmd = { "asm-lsp" },
             filetypes = { "s", "S", "asm" },
@@ -143,56 +95,6 @@ return {
             on_attach = on_attach,
         })
 
-        lspconfig.jdtls.setup({
-            filetypes = { "java" },
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-            settings = require("nvole.plugins.lsp.servers.jdtls").settings,
-        })
-
-        lspconfig.ltex.setup({
-            filetypes = { "tex", "markdown" },
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-        })
-
-        lspconfig.kotlin_language_server.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-        })
-
-        lspconfig.groovyls.setup({
-            capabilities = capabilities,
-            handlers = handlers,
-            on_attach = on_attach,
-        })
-
-        -- Requires manual installation for Termux
-        -- Lua_ls
-        if vim.fn.executable("lua-language-server") == 1 then
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities,
-                handlers = handlers,
-                on_attach = on_attach,
-                settings = require("nvole.plugins.lsp.servers.lua_ls").settings,
-            })
-        end
-
-        -- LaTeX
-        if vim.fn.executable("texlab") == 1 then
-            lspconfig.texlab.setup({
-                cmd = { "texlab" },
-                filetypes = { "tex", "plaintex", "bib" },
-                on_attach = on_attach,
-                capabilities = capabilities,
-                handlers = handlers,
-            })
-        end
-
-        -- Clangd
         if vim.fn.executable("clangd") == 1 then
             lspconfig.clangd.setup({
                 cmd = {
@@ -214,7 +116,13 @@ return {
             })
         end
 
-        -- Rust
+        lspconfig.cmake.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.cmake").settings,
+        })
+
         if vim.fn.executable("rust-analyzer") == 1 then
             if rt_ok then
                 rust_tools.setup({
@@ -227,10 +135,101 @@ return {
             end
         end
 
-        -- Zig Language Server
         if vim.fn.executable("zls") == 1 then
             lspconfig.zls.setup({
                 cmd = { "zls" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                handlers = handlers,
+            })
+        end
+
+        -- SCRIPTING
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.pyright").settings,
+        })
+
+        if vim.fn.executable("lua-language-server") == 1 then
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities,
+                handlers = handlers,
+                on_attach = on_attach,
+                settings = require("nvole.plugins.lsp.servers.lua_ls").settings,
+            })
+        end
+
+        lspconfig.bashls.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.bashls").settings,
+        })
+
+        -- JVM LANGUAGES
+        lspconfig.jdtls.setup({
+            filetypes = { "java" },
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.jdtls").settings,
+        })
+
+        lspconfig.kotlin_language_server.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+        })
+
+        lspconfig.groovyls.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+        })
+
+        -- WEB DEVELOPMENT
+        lspconfig.cssls.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.cssls").settings,
+        })
+
+        lspconfig.html.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.html").settings,
+        })
+
+        lspconfig.tsserver.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.tsserver").settings,
+        })
+
+        lspconfig.jsonls.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.jsonls").settings,
+        })
+
+        -- TYPESETTING
+        lspconfig.ltex.setup({
+            filetypes = { "tex", "markdown" },
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+        })
+
+        if vim.fn.executable("texlab") == 1 then
+            lspconfig.texlab.setup({
+                cmd = { "texlab" },
+                filetypes = { "tex", "plaintex", "bib" },
                 on_attach = on_attach,
                 capabilities = capabilities,
                 handlers = handlers,
