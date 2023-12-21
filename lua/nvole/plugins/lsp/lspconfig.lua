@@ -24,7 +24,7 @@ return {
 
         local signs = {
             Error = "✘",
-            Warn = " ",
+            Warn = "",
             Hint = "",
             Info = ""
         }
@@ -86,6 +86,34 @@ return {
             -- set up buffer keymaps, etc.
         end
 
+        lspconfig.bashls.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.bashls").settings,
+        })
+
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.pyright").settings,
+        })
+
+        lspconfig.cmake.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.cmake").settings,
+        })
+
+        lspconfig.html.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            on_attach = on_attach,
+            settings = require("nvole.plugins.lsp.servers.html").settings,
+        })
+
         lspconfig.cssls.setup({
             capabilities = capabilities,
             handlers = handlers,
@@ -141,14 +169,6 @@ return {
             handlers = handlers,
             on_attach = on_attach,
         })
-
-        for _, server in ipairs({ "bashls", "pyright", "cmake", "html" }) do
-            lspconfig[server].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                handlers = handlers,
-            })
-        end
 
         -- Requires manual installation for Termux
         -- Lua_ls
