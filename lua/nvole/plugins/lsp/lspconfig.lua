@@ -5,8 +5,9 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "nvim-tree/nvim-tree.lua",
         { "antosha417/nvim-lsp-file-operations", config = true },
-        "simrat39/rust-tools.nvim",
+        "p00f/clangd_extensions.nvim",
         "mfussenegger/nvim-jdtls",
+        "simrat39/rust-tools.nvim",
     },
     config = function()
         local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
