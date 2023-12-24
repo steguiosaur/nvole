@@ -16,9 +16,9 @@ return {
 
         require("mason-nvim-dap").setup({
             ensure_installed = {
-                -- "cpptools",
-                -- "codelldb",
                 "debugpy",
+                "java-debug-adapter",
+                "java-test",
             },
         })
 

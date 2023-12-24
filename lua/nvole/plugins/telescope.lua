@@ -5,13 +5,10 @@ return {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
-        "ThePrimeagen/harpoon",
     },
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
-        local opts = { noremap = true, silent = true }
-        local keymap = vim.keymap.set
 
         telescope.setup{
             defaults = {
@@ -31,8 +28,10 @@ return {
             }
         }
 
-        telescope.load_extension('harpoon')
         telescope.load_extension("fzf")
+
+        local opts = { noremap = true, silent = true }
+        local keymap = vim.keymap.set
 
         keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
         keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)

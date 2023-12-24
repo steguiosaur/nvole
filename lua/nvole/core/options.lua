@@ -62,9 +62,11 @@ end
 
 ---- GLOBAL & AUTOCMD
 if vim.fn.has("Android") == 1 then
+    vim.g.node_provider = '$PREFIX/bin/node'
     vim.g.python3_host_prog = '$PREFIX/bin/python'
     vim.g.python_host_prog = '$PREFIX/bin/python2'
 else
+    vim.g.node_provider = '/usr/bin/node'
     vim.g.python3_host_prog = '/usr/bin/python'
     vim.g.python_host_prog = '/usr/bin/python2'
     -- vertical help buffer
