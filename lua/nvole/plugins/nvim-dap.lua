@@ -3,7 +3,6 @@ return {
     dependencies = {
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
-        "jay-babu/mason-nvim-dap.nvim",
     },
     config = function()
         local dap_ok, dap = pcall(require, "dap")
@@ -13,14 +12,6 @@ return {
         if not dap_ok and dapui_ok and dapvt_ok then
             return
         end
-
-        require("mason-nvim-dap").setup({
-            ensure_installed = {
-                "debugpy",
-                "java-debug-adapter",
-                "java-test",
-            },
-        })
 
         local opts = { noremap = true, silent = true }
 
