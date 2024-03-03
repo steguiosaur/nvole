@@ -1,5 +1,5 @@
 return {
-    "nvim-lualine/lualine.nvim", -- statusline
+    "nvim-lualine/lualine.nvim",
     lazy = false,
     dependencies = {
         "linrongbin16/lsp-progress.nvim",

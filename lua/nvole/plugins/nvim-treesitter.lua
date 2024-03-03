@@ -10,7 +10,7 @@ return {
                 "cmake",
                 "cpp",
                 "lua",
-                "markdown",
+                --"markdown",
                 "markdown_inline",
                 "java",
                 "rust",

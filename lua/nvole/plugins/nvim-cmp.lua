@@ -22,12 +22,14 @@ return {
             --store_selection_keys = "<Tab>",
         }
 
-        luasnip.filetype_extend("javascript", { "javascriptreact" })
-        luasnip.filetype_extend("javascript", { "html" })
-        luasnip.filetype_extend("python", { "django" })
         require("luasnip.loaders.from_snipmate").lazy_load()
         require("luasnip.loaders.from_vscode").lazy_load()
         require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snips/" })
+        luasnip.filetype_extend("javascript", { "javascriptreact" })
+        luasnip.filetype_extend("javascript", { "typescriptreact" })
+        luasnip.filetype_extend("javascript", { "html" })
+        luasnip.filetype_extend("python", { "django" })
+        luasnip.filetype_extend("c", { "cdoc" })
 
         local kind_icons = {
             Text = "",
@@ -60,7 +62,7 @@ return {
         cmp.setup {
             snippet = {
                 expand = function(args)
-                    luasnip.lsp_expand(args.body) -- For `luasnip` users.
+                    luasnip.lsp_expand(args.body)
                 end,
             },
             confirm_opts = {

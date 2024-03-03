@@ -14,6 +14,7 @@ return {
         })
 
         local keymap = vim.keymap.set
+        local opts = { noremap = true, silent = true }
 
         keymap("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
         keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
@@ -21,5 +22,12 @@ return {
         keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
         keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 
+        keymap("n", "<leader>xn", function ()
+            require("trouble").next({skip_groups = true, jump = true});
+        end)
+
+        keymap("n", "<leader>xb", function ()
+            require("trouble").previous({skip_groups = true, jump = true});
+        end)
     end,
 }

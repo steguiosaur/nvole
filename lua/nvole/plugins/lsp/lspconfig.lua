@@ -39,7 +39,7 @@ return {
             },
         }
 
-        vim.fn.execute("au CursorHold * lua vim.diagnostic.open_float(0, { scope = 'cursor' })", true)
+        -- vim.fn.execute("au CursorHold * lua vim.diagnostic.open_float(0, { scope = 'cursor' })", true)
 
         -- LSP HANDLERS
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
@@ -75,7 +75,7 @@ return {
             keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
             keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
             keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-            --keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+            keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
             keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
             keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
             keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
@@ -95,13 +95,18 @@ return {
             "groovyls",
             "kotlin_language_server",
             "ltex",
-            "diagnosticls",
         }) do
             lspconfig[server].setup({
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
         end
+
+        lspconfig.diagnosticls.setup({
+            ft = { "markdown" },
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
 
         if vim.fn.executable("clangd") == 1 then
             lspconfig.clangd.setup({
