@@ -3,6 +3,7 @@ return {
     dependencies = {
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
+        "nvim-neotest/nvim-nio"
     },
     config = function()
         local dap_ok, dap = pcall(require, "dap")

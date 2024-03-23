@@ -37,6 +37,7 @@ return {
                 "kotlin_language_server",
                 "groovyls",
                 "ltex",
+                "phpactor",
             },
             automatic_installation = {
                 exclude = {

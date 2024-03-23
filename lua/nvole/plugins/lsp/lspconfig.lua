@@ -95,6 +95,7 @@ return {
             "groovyls",
             "kotlin_language_server",
             "ltex",
+            "phpactor"
         }) do
             lspconfig[server].setup({
                 on_attach = on_attach,
