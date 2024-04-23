@@ -94,14 +94,40 @@ return {
             "html",
             "groovyls",
             "kotlin_language_server",
-            "ltex",
-            "phpactor"
+            "eslint",
         }) do
             lspconfig[server].setup({
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
         end
+        lspconfig.phpactor.setup({
+            cmd = { "phpactor", "language-server" },
+            filetypes = { "php", "blade" },
+            root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+            init_options = {
+                ["language_server_worse_reflection.inlay_hints.enable"] = true,
+                ["language_server_worse_reflection.inlay_hints.params"] = true,
+                ["language_server_worse_reflection.inlay_hints.types"] = true,
+                ["language_server_configuration.auto_config"] = false,
+                ["code_transform.import_globals"] = true,
+                ["language_server_phpstan.enabled"] = true,
+                ["language_server_phpstan.level"] = 7,
+                ["language_server_phpstan.bin"] = "phpstan",
+                ["language_server_psalm.enabled"] = true,
+            },
+        })
+
+        -- lspconfig.ltex.setup({
+        --     ft = { "latex" },
+        --     on_attach = on_attach,
+        --     capabilities = capabilities,
+        --     settings = {
+        --         ltex = {
+        --             language = "en-GB",
+        --         },
+        --     },
+        -- })
 
         lspconfig.diagnosticls.setup({
             ft = { "markdown" },

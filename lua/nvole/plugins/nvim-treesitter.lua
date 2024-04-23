@@ -17,6 +17,7 @@ return {
                 "javascript",
                 "typescript",
                 "python",
+                "php",
                 "latex",
                 "lua",
                 "zig",

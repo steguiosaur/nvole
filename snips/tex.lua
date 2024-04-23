@@ -40,6 +40,13 @@ return {
         }
     ),
 
+    s({trig="apabib", dscr="APA Bibtex citation"},
+        {
+            t({ "\\bibliographystyle{apalike}"}),
+            t({ "", "\\bibliography{" }), i(0), t({"}"}),
+        }
+    ),
+
     -- Environment
     s({trig="beg", dscr="LaTeX environment begin"},
         {
