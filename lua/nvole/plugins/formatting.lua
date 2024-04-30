@@ -34,7 +34,7 @@ return {
                 c = { "clang_format" },
                 cpp = { "clang_format" },
                 java = { "clang_format" },
-                php = { "php_cs_fixer" },
+                php = { "php-cs-fixer" },
             },
 
             format_on_save = {

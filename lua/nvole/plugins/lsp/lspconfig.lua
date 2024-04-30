@@ -123,12 +123,6 @@ return {
             capabilities = capabilities,
         })
 
-        lspconfig.diagnosticls.setup({
-            ft = { "markdown" },
-            on_attach = on_attach,
-            capabilities = capabilities,
-        })
-
         if vim.fn.executable("clangd") == 1 then
             lspconfig.clangd.setup({
                 cmd = {
