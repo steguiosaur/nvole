@@ -15,6 +15,7 @@ return {
             -- cpp = { "cpplint" },
             markdown = { "markdownlint" },
             cmake = { "cmakelint" },
+            php = { "phpcs" },
         }
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
