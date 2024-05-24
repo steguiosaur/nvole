@@ -38,6 +38,7 @@ return {
                 "groovyls",
                 "ltex",
                 "phpactor",
+                "itelephense",
             },
             automatic_installation = {
                 exclude = {
@@ -57,6 +58,7 @@ return {
                 "isort",        -- python formatter
                 "black",        -- python formatter
                 "bibtex-tidy",  -- bibtex formatter
+                "php-cs-fixer", -- php formatter
 
                 "pylint",       -- python linter
                 "eslint_d",     -- js linter
@@ -64,6 +66,7 @@ return {
                 "cpplint",      -- c/cpp linter
                 "cmakelang",    -- cmake linter
                 "cmakelint",    -- cmake linter
+                "phpcs",        -- php linter
             },
         })
 
