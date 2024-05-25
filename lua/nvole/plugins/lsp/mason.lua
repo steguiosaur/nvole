@@ -38,7 +38,7 @@ return {
                 "groovyls",
                 "ltex",
                 "phpactor",
-                "itelephense",
+                "intelephense",
             },
             automatic_installation = {
                 exclude = {
