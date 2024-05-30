@@ -4,9 +4,9 @@ return {
     version = "*",
     opts = {
         options = {
-            buffer_close_icon = '',
-            modified_icon = '',
-            close_icon = '',
+            buffer_close_icon = '',
+            modified_icon = '󰆓',
+            close_icon = '󰅙',
             show_close_icon = true,
             left_trunc_marker = '',
             right_trunc_marker = '',

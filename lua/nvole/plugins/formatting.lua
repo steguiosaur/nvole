@@ -31,6 +31,7 @@ return {
                 lua = { "stylua" },
                 python = { "isort", "black" },
                 latex = { "latexindent" },
+                bibtex = { "bibtex-tidy" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
                 java = { "clang_format" },
