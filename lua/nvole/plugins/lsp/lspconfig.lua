@@ -113,9 +113,22 @@ return {
             },
         })
 
-        lspconfig.intelephense.setup({
+        lspconfig.phpactor.setup({
+            cmd = { "phpactor", "language-server" },
+            filetypes = { "php", "blade" },
             on_attach = on_attach,
             capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+            init_options = {
+                ["language_server_worse_reflection.inlay_hints.enable"] = true,
+                ["language_server_worse_reflection.inlay_hints.params"] = true,
+                ["language_server_worse_reflection.inlay_hints.types"] = true,
+                ["language_server_configuration.auto_config"] = false,
+                ["code_transform.import_globals"] = true,
+                ["language_server_phpstan.bin"] = "phpstan",
+                -- ["language_server_phpstan.enabled"] = true,
+                ["language_server_phpstan.level"] = 7,
+            },
         })
 
         lspconfig.volar.setup({
@@ -171,6 +184,7 @@ return {
 
         if vim.fn.executable("lua-language-server") == 1 then
             lspconfig.lua_ls.setup({
+                ft = { "lua" },
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = require("nvole.plugins.lsp.servers.lua_ls").settings,
@@ -199,12 +213,14 @@ return {
         })
 
         lspconfig.tsserver.setup({
+            ft = { "ts" },
             capabilities = capabilities,
             on_attach = on_attach,
             settings = require("nvole.plugins.lsp.servers.tsserver").settings,
         })
 
         lspconfig.jsonls.setup({
+            ft = { "json" },
             capabilities = capabilities,
             on_attach = on_attach,
             settings = require("nvole.plugins.lsp.servers.jsonls").settings,
@@ -213,7 +229,7 @@ return {
         if vim.fn.executable("texlab") == 1 then
             lspconfig.texlab.setup({
                 cmd = { "texlab" },
-                filetypes = { "tex", "plaintex", "bib" },
+                ft = { "latex", "tex", "plaintex", "bib" },
                 on_attach = on_attach,
                 capabilities = capabilities,
             })

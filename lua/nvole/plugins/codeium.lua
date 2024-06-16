@@ -1,7 +1,6 @@
 return {
     "Exafunction/codeium.vim",
-    enabled = false,
-    --enabled = function() return vim.fn.has("Android") == 0 end,
+    enabled = function() return vim.fn.has("Android") == 0 end,
     config = function()
         vim.g.codeium_disable_bindings = 1
 

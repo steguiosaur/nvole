@@ -29,13 +29,20 @@ return {
                 markdown = { "prettier" },
                 graphql = { "prettier" },
                 lua = { "stylua" },
-                python = { "isort", "black" },
+                python = { "black" },
                 latex = { "latexindent" },
                 bibtex = { "bibtex-tidy" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
                 java = { "clang_format" },
-                php = { "php-cs-fixer" },
+                php = {"php-cs-fixer" 
+                    -- command = "php-cs-fixer", 
+                    -- args = { 
+                    --     "fix", 
+                    --     "$FILENAME",
+                    -- },  
+                    -- stdin = false,
+                }
             },
 
             format_on_save = {

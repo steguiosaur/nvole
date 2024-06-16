@@ -10,12 +10,12 @@ return {
             javascriptreact = { "eslint_d" },
             typescriptreact = { "eslint_d" },
             svelte = { "eslint_d" },
-            python = { "pylint" },
+            -- python = { "pylint" },
             -- c = { "cpplint" },
             -- cpp = { "cpplint" },
             markdown = { "markdownlint" },
             cmake = { "cmakelint" },
-            php = { "phpcs" },
+            -- php = { "phpcs" },
         }
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

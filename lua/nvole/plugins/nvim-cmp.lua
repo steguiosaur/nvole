@@ -30,7 +30,7 @@ return {
         luasnip.filetype_extend("javascript", { "html" })
         luasnip.filetype_extend("python", { "django" })
         luasnip.filetype_extend("c", { "cdoc" })
-        luasnip.filetype_extend("php", {"blade"})
+        luasnip.filetype_extend("php", {"blade", "html"})
 
         local kind_icons = {
             Text = "",

@@ -54,6 +54,7 @@ local options = {
     pumheight       = 10,
     swapfile        = false,    -- swapfiles for recovery
     updatetime      = 250,
+    fillchars       = {eob = " "}
 }
 
 for k, v in pairs(options) do

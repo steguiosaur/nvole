@@ -43,10 +43,55 @@ return {
         }
     ),
 
+    -- Simple Preamble for LaTeX Code Formatting
+    s({trig="phpcode", dscr="PHP Code Formatting with Listings"},
+        {
+            t({"\\usepackage{xcolor}"}),
+            t({"", "\\definecolor{codegreen}{rgb}{0,0.6,0}"}),
+            t({"", "\\definecolor{codegray}{rgb}{0.5,0.5,0.5}"}),
+            t({"", "\\definecolor{codepurple}{rgb}{0.58,0,0.82}"}),
+            t({"", "\\definecolor{backcolour}{rgb}{0.97,0.95,0.92}"}),
+            t({"", ""}),
+            t({"", "\\lstdefinestyle{mystyle}{"}),
+            t({"    language=php,"}),
+            t({"    backgroundcolor=\\color{backcolour},"}),
+            t({"    commentstyle=\\color{codegreen},"}),
+            t({"    keywordstyle=\\color{magenta},"}),
+            t({"    numberstyle=\\tiny\\color{codegray},"}),
+            t({"    stringstyle=\\color{codepurple},"}),
+            t({"    basicstyle=\\ttfamily\\footnotesize,"}),
+            t({"    breakatwhitespace=false,"}),
+            t({"    breaklines=true,"}),
+            t({"    captionpos=b,"}),
+            t({"    keepspaces=true,"}),
+            t({"    numbers=left,"}),
+            t({"    numbersep=5pt,"}),
+            t({"    showspaces=false,"}),
+            t({"    showstringspaces=false,"}),
+            t({"    showtabs=false,"}),
+            t({"    tabsize=4"}),
+            t({"}"}),
+            t({"", ""}),
+            t({"\\lstset{style=mystyle}"})
+        }
+    ),
+
     s({trig="apabib", dscr="APA Bibtex citation"},
         {
             t({ "\\bibliographystyle{apalike}"}),
             t({ "", "\\bibliography{" }), i(0), t({"}"}),
+        }
+    ),
+
+    s({trig="citet", dscr="Name (2000)"},
+        {
+            t({ "", "\\citet{" }), i(0), t({"}"}),
+        }
+    ),
+
+    s({trig="citep", dscr="(Name, 2000)"} ,
+        {
+            t({ "", "\\citep{" }), i(0), t({"}"}),
         }
     ),
 
@@ -115,9 +160,9 @@ return {
     -- Code Listings
     s({trig="lst", dscr="Code listings environment"},
         {
-            t({ "\\begin{listings}[style=]",
+            t({ "\\begin{lstlisting}[style=]",
                 "    "}),i(1),
-            t({ "", "\\end{listings}"}),
+            t({ "", "\\end{lstlisting}"}),
         }
     ),
 
