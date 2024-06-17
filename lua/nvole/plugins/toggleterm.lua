@@ -1,8 +1,9 @@
 return {
     "akinsho/toggleterm.nvim",
+    event = 'VeryLazy',
     version = "*",
     config = function()
-        require("toggleterm").setup{
+        require("toggleterm").setup {
             direction = "float",
             float_opts = {
                 border = "single"

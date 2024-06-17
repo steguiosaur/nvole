@@ -1,6 +1,6 @@
 return {
     "stevearc/conform.nvim",
-    --event = { "BufWritePre" }, -- to disable, comment this out
+    event = { "BufNewFile", "BufWritePre" }, -- to disable, comment this out
     keys = {
         {
             "<leader>lc",

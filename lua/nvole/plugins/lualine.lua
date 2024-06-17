@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    lazy = false,
+    event = 'VeryLazy',
     dependencies = {
         "linrongbin16/lsp-progress.nvim",
         "nvim-tree/nvim-web-devicons",
@@ -12,38 +12,38 @@ return {
             spinner = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" },
             client_format = function(client_name, spinner, series_messages)
                 return #series_messages > 0
-                        and (table.concat(
-                            series_messages,
-                            ", "
-                        ) .. " " .. spinner .. " " .. "[" .. client_name .. "]" )
+                    and (table.concat(
+                        series_messages,
+                        ", "
+                    ) .. " " .. spinner .. " " .. "[" .. client_name .. "]")
                     or nil
             end,
             format = function(client_messages)
                 local sign = " LSP" -- nf-fa-gear \uf013
                 return #client_messages > 0
-                        and (" " .. table.concat(client_messages, " " .. sign))
+                    and (" " .. table.concat(client_messages, " " .. sign))
                     or sign
             end,
 
         })
 
-        local line_x = vim.fn.has("Android") == 1 and {} or {'fileformat', 'encoding'}
+        local line_x = vim.fn.has("Android") == 1 and {} or { 'fileformat', 'encoding' }
 
         -- Lualine
-        require('lualine').setup{
+        require('lualine').setup {
             options = {
                 theme = 'nightfly',
-                section_separators = { left = '', right = ''},
-                component_separators = { left = '|', right = '|'},
+                section_separators = { left = '', right = '' },
+                component_separators = { left = '|', right = '|' },
             },
             sections = {
-                lualine_a = {'mode'},
+                lualine_a = { 'mode' },
                 lualine_b = {
                     'branch',
                     'diff',
                     {
                         'diagnostics',
-                        on_click = function () vim.cmd('Trouble document_diagnostics') end
+                        on_click = function() vim.cmd('Trouble document_diagnostics') end
                     },
                     'filename'
                 },
@@ -55,8 +55,8 @@ return {
                     },
                     line_x, 'filetype'
                 },
-                lualine_y = {'progress'},
-                lualine_z = {'location'}
+                lualine_y = { 'progress' },
+                lualine_z = { 'location' }
             },
         }
     end,
