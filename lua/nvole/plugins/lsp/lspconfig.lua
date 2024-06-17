@@ -88,6 +88,7 @@ return {
         end
 
         for _, server in ipairs({
+            "diagnosticls",
             "asm_lsp",
             "bashls",
             "cmake",
@@ -95,6 +96,7 @@ return {
             "groovyls",
             "kotlin_language_server",
             "eslint",
+            "tailwindcss",
         }) do
             lspconfig[server].setup({
                 on_attach = on_attach,
