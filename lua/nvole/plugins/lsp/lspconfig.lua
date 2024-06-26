@@ -105,12 +105,12 @@ return {
         end
 
         lspconfig.ltex.setup({
-            ft = { "latex" },
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {
                 ltex = {
                     language = "en-GB",
+                    enabled = { "latex" },
                 },
             },
         })
@@ -222,7 +222,6 @@ return {
         })
 
         lspconfig.jsonls.setup({
-            ft = { "json" },
             capabilities = capabilities,
             on_attach = on_attach,
             settings = require("nvole.plugins.lsp.servers.jsonls").settings,
@@ -230,8 +229,6 @@ return {
 
         if vim.fn.executable("texlab") == 1 then
             lspconfig.texlab.setup({
-                cmd = { "texlab" },
-                ft = { "latex", "tex", "plaintex", "bib" },
                 on_attach = on_attach,
                 capabilities = capabilities,
             })

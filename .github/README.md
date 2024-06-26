@@ -39,6 +39,7 @@ sudo pacman -S git neovim
 ```
 
 Clone the repository to `$HOME/.config/nvim`:
+
 > create backup of your config before installing
 
 ```console
@@ -48,6 +49,7 @@ git clone https://github.com/steguiosaur/nvole.git ~/.config/nvim
 Install plugins by running `nvim` in the terminal. It will automatically install
 the package manager on initial startup. Type `Lazy install` in command mode to
 install plugins. Restore repository default version of plugins with `Lazy restore`.
+
 > Plugins listed at `~/.config/nvim/lua/nvole/core/plugins/` folder.
 
 ```shell
@@ -61,7 +63,7 @@ language server protocol. To install language servers, type `:Mason` in command
 mode and look for the language server that suits your needs.
 
 > There will be several language servers which automatically install.
-Go to `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua` to edit or disable the listed servers.
+> Go to `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua` to edit or disable the listed servers.
 
 Add new servers in `~/.config/nvim/lua/nvole/plugins/lsp/lspconfig.lua`.
 
