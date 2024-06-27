@@ -84,9 +84,26 @@ return {
 					scrollbar = true,
 				}),
 			},
+			view = {
+				docs = {
+					auto_open = true,
+				},
+				entries = "custom", -- completion menu above command line (custom, wildmenu, native ('cmp.setup.cmdline' does not work with 'native').
+			},
 			experimental = {
 				ghost_text = false,
 				native_menu = false,
+			},
+			completion = {
+				keyword_length = 1,
+			},
+			performance = {
+				debounce = 100,
+				throttle = 100,
+				fetching_timeout = 100,
+				confirm_resolve_timeout = 100,
+				async_budget = 500,
+				-- max_view_entries = 20,
 			},
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -94,7 +111,7 @@ return {
 				["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-				["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+				-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 				["<C-e>"] = cmp.mapping({
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
@@ -124,7 +141,6 @@ return {
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
-					-- Kind icons
 					vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 					vim_item.menu = ({
 						luasnip = "[Snip]",
@@ -137,10 +153,10 @@ return {
 				end,
 			},
 			sources = {
-				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
-				{ name = "path" },
+				{ name = "luasnip" },
 				{ name = "buffer" },
+				{ name = "path" },
 				{ name = "nvim_lua" },
 			},
 		})
