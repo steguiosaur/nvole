@@ -34,8 +34,8 @@ return {
 		luasnip.filetype_extend("javascript", { "html" })
 		luasnip.filetype_extend("python", { "django" })
 		luasnip.filetype_extend("c", { "cdoc" })
-		luasnip.filetype_extend("php", { "html" })
 		luasnip.filetype_extend("blade", { "html" })
+		luasnip.filetype_extend("php", { "html" })
 
 		local kind_icons = {
 			Text = "",
@@ -88,30 +88,30 @@ return {
 				docs = {
 					auto_open = true,
 				},
-				entries = "custom", -- completion menu above command line (custom, wildmenu, native ('cmp.setup.cmdline' does not work with 'native').
+				-- entries = "custom", -- completion menu above command line (custom, wildmenu, native ('cmp.setup.cmdline' does not work with 'native').
 			},
 			experimental = {
 				ghost_text = false,
 				native_menu = false,
 			},
-			completion = {
-				keyword_length = 1,
-			},
-			performance = {
-				debounce = 100,
-				throttle = 100,
-				fetching_timeout = 100,
-				confirm_resolve_timeout = 100,
-				async_budget = 500,
-				-- max_view_entries = 20,
-			},
+			-- completion = {
+			-- 	keyword_length = 1,
+			-- },
+			-- performance = {
+			-- 	debounce = 100,
+			-- 	throttle = 100,
+			-- 	fetching_timeout = 100,
+			-- 	confirm_resolve_timeout = 100,
+			-- 	async_budget = 500,
+			-- 	-- max_view_entries = 20,
+			-- },
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-				-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+				["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 				["<C-e>"] = cmp.mapping({
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
@@ -153,8 +153,8 @@ return {
 				end,
 			},
 			sources = {
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "nvim_lsp" },
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "nvim_lua" },
