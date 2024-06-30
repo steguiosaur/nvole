@@ -1,6 +1,5 @@
 return {
 	"norcalli/nvim-colorizer.lua", -- color highlighter
-	event = "VeryLazy",
 	config = function()
 		-- Run colorizer on every buffer:
 		vim.cmd([[
