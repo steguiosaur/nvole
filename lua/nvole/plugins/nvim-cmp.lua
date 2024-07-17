@@ -36,6 +36,7 @@ return {
 		luasnip.filetype_extend("c", { "cdoc" })
 		luasnip.filetype_extend("blade", { "html" })
 		luasnip.filetype_extend("php", { "html" })
+		luasnip.filetype_extend("php", { "phpdoc" })
 
 		local kind_icons = {
 			Text = "",

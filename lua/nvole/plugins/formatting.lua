@@ -17,7 +17,7 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
+				-- javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
@@ -42,8 +42,9 @@ return {
 				php = {
 					command = "php-cs-fixer",
 					args = {
+						"--rules=@PER-CS",
+						"--using-cache=no",
 						"fix",
-						"--rules=@PSR12",
 						"$FILENAME",
 					},
 					stdin = false,

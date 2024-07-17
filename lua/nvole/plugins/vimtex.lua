@@ -20,7 +20,7 @@ return {
 		}
 
 		vim.g.vimtex_compiler_latexmk_engines = {
-			_ = "-xelatex",
+			_ = "-lualatex",
 		}
 
 		vim.g.vimtex_quickfix_ignore_filters = {
