@@ -23,7 +23,6 @@ return {
 
 		luasnip.config.set_config({
 			enable_autosnippets = true,
-			--store_selection_keys = "<Tab>",
 		})
 
 		require("luasnip.loaders.from_snipmate").lazy_load()
@@ -89,23 +88,11 @@ return {
 				docs = {
 					auto_open = true,
 				},
-				-- entries = "custom", -- completion menu above command line (custom, wildmenu, native ('cmp.setup.cmdline' does not work with 'native').
 			},
 			experimental = {
 				ghost_text = false,
 				native_menu = false,
 			},
-			-- completion = {
-			-- 	keyword_length = 1,
-			-- },
-			-- performance = {
-			-- 	debounce = 100,
-			-- 	throttle = 100,
-			-- 	fetching_timeout = 100,
-			-- 	confirm_resolve_timeout = 100,
-			-- 	async_budget = 500,
-			-- 	-- max_view_entries = 20,
-			-- },
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),

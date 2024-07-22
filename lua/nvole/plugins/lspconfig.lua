@@ -92,15 +92,20 @@ return {
 		end
 
 		for _, server in ipairs({
-			"diagnosticls",
-			"asm_lsp",
 			"bashls",
 			"cmake",
+			"cssls",
+			"diagnosticls",
 			"html",
+			"eslint",
 			"groovyls",
 			"kotlin_language_server",
-			"eslint",
+			"pyright",
 			"tailwindcss",
+			"texlab",
+			"tsserver",
+			"volar",
+			"zls",
 		}) do
 			lspconfig[server].setup({
 				on_attach = on_attach,
@@ -113,7 +118,7 @@ return {
 			capabilities = capabilities,
 			settings = {
 				ltex = {
-					language = "en-GB",
+					language = "en-US",
 					enabled = { "latex" },
 				},
 			},
@@ -139,65 +144,52 @@ return {
 			},
 		})
 
-		lspconfig.volar.setup({
+		lspconfig.clangd.setup({
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+				"--background-index",
+				"--compile-commands-dir=build",
+				"--clang-tidy",
+				"--cross-file-rename",
+				"--all-scopes-completion",
+				"--completion-style=detailed",
+				"--header-insertion-decorators",
+				"--header-insertion=iwyu",
+				"--pch-storage=memory",
+			},
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-
-		if vim.fn.executable("clangd") == 1 then
-			lspconfig.clangd.setup({
-				cmd = {
-					"clangd",
-					"--offset-encoding=utf-16",
-					"--background-index",
-					"--compile-commands-dir=build",
-					"--clang-tidy",
-					"--cross-file-rename",
-					"--all-scopes-completion",
-					"--completion-style=detailed",
-					"--header-insertion-decorators",
-					"--header-insertion=iwyu",
-					"--pch-storage=memory",
-				},
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-		end
 
 		local rt_ok, rust_tools = pcall(require, "rust-tools")
-		if vim.fn.executable("rust-analyzer") == 1 then
-			if rt_ok then
-				rust_tools.setup({
-					server = {
-						on_attach = on_attach,
-						capabilities = capabilities,
-					},
-				})
-			end
-		end
-
-		if vim.fn.executable("zls") == 1 then
-			lspconfig.zls.setup({
-				cmd = { "zls" },
-				on_attach = on_attach,
-				capabilities = capabilities,
+		if rt_ok then
+			rust_tools.setup({
+				server = {
+					on_attach = on_attach,
+					capabilities = capabilities,
+				},
 			})
 		end
 
-		lspconfig.pyright.setup({
+		lspconfig.lua_ls.setup({
+			ft = { "lua" },
 			capabilities = capabilities,
 			on_attach = on_attach,
-			settings = require("nvole.plugins.lsp.servers.pyright").settings,
+			settings = {
+				Lua = {
+					runtime = {
+						version = "LuaJIT",
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					telemetry = {
+						enable = false,
+					},
+				},
+			},
 		})
-
-		if vim.fn.executable("lua-language-server") == 1 then
-			lspconfig.lua_ls.setup({
-				ft = { "lua" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = require("nvole.plugins.lsp.servers.lua_ls").settings,
-			})
-		end
 
 		lspconfig.cssls.setup({
 			capabilities = capabilities,
@@ -220,24 +212,47 @@ return {
 			},
 		})
 
-		lspconfig.tsserver.setup({
-			ft = { "ts" },
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = require("nvole.plugins.lsp.servers.tsserver").settings,
-		})
-
 		lspconfig.jsonls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			settings = require("nvole.plugins.lsp.servers.jsonls").settings,
+			settings = {
+				json = {
+					schemas = {
+						{
+							fileMatch = { "package.json" },
+							url = "https://json.schemastore.org/package.json",
+						},
+						{
+							fileMatch = { "tsconfig*.json" },
+							url = "https://json.schemastore.org/tsconfig.json",
+						},
+						{
+							fileMatch = { ".prettierrc", ".prettierrc.json", "prettier.config.json" },
+							url = "https://json.schemastore.org/prettierrc.json",
+						},
+						{
+							fileMatch = { ".eslintrc", ".eslintrc.json" },
+							url = "https://json.schemastore.org/eslintrc.json",
+						},
+						{
+							fileMatch = { ".babelrc", ".babelrc.json", "babel.config.json" },
+							url = "https://json.schemastore.org/babelrc.json",
+						},
+						{
+							fileMatch = { "lerna.json" },
+							url = "https://json.schemastore.org/lerna.json",
+						},
+						{
+							fileMatch = { "now.json", "vercel.json" },
+							url = "https://json.schemastore.org/now.json",
+						},
+						{
+							fileMatch = { "ecosystem.json" },
+							url = "https://json.schemastore.org/pm2-ecosystem.json",
+						},
+					},
+				},
+			},
 		})
-
-		if vim.fn.executable("texlab") == 1 then
-			lspconfig.texlab.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-		end
 	end,
 }

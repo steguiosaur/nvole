@@ -1,6 +1,6 @@
 return {
 
-    "nvim-lua/plenary.nvim", -- lua function many plugins use
+	"nvim-lua/plenary.nvim", -- lua function many plugins use
 
-    "tpope/vim-fugitive",    -- git commands on nvim
+	"tpope/vim-fugitive", -- git commands on nvim
 }
