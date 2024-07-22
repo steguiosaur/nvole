@@ -62,15 +62,7 @@ for k, v in pairs(options) do
 end
 
 ---- GLOBAL & AUTOCMD
-if vim.fn.has("Android") == 1 then
-    vim.g.node_provider = '$PREFIX/bin/node'
-    vim.g.python3_host_prog = '$PREFIX/bin/python'
-    vim.g.python_host_prog = '$PREFIX/bin/python2'
-else
-    vim.g.node_provider = '/usr/bin/node'
-    vim.g.python3_host_prog = '/usr/bin/python'
-    vim.g.python_host_prog = '/usr/bin/python2'
-    -- vertical help buffer
+if vim.fn.has("Android") == 0 then
     vim.cmd("autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
 end
 
@@ -78,3 +70,4 @@ end
 vim.o.directory = vim.fn.getenv('TMPDIR')
 
 vim.cmd("filetype plugin on")
+vim.cmd("syntax on")

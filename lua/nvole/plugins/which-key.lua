@@ -22,9 +22,6 @@ return {
 				g = false,
 			},
 		},
-		defer = {
-			operators = { gc = "Comments" },
-		},
 		icons = {
 			breadcrumb = "»",
 			separator = "➜",

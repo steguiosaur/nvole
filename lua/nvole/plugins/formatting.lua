@@ -28,7 +28,7 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				graphql = { "prettier" },
-				lua = { "stylua" },
+				-- lua = { "stylua" },
 				python = { "black" },
 				latex = { "latexindent" },
 				bibtex = { "bibtex-tidy" },

@@ -15,7 +15,7 @@ local path_to_jtest_package = path_to_mason_packages .. "java-test/"
 
 local path_to_config = path_to_jdtls_package .. "/config_linux_arm"
 -- [CRITICAL]
-local path_to_jar = path_to_jdtls_package .. "plugins/org.eclipse.equinox.launcher_1.6.600.v20231106-1826.jar"
+local path_to_jar = path_to_jdtls_package .. "plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 local lombok_path = path_to_jdtls_package .. "/lombok.jar"
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
