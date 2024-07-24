@@ -16,7 +16,7 @@
   - ls:`jdtls` build:`gradle` for Java
   - ls:`zls` for Zig
   - Et al.
-- [ ] Web development setup
+- [x] Web development setup
 
 ![Neovim with LaTeX](./nvim_latex.png)
 
