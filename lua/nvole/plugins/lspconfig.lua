@@ -77,7 +77,7 @@ return {
             keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
             keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
             keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-            keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+            keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
             keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
             keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
             -- keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
