@@ -3,7 +3,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        "nvim-tree/nvim-tree.lua",
         { "antosha417/nvim-lsp-file-operations", config = true },
         "p00f/clangd_extensions.nvim",
         "mfussenegger/nvim-jdtls",
@@ -48,14 +47,25 @@ return {
         -- LSP HANDLERS
         vim.lsp.handlers["textDocument/hover"] =
             vim.lsp.with(vim.lsp.handlers.hover, { silent = true, border = "single" })
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
+            { border = "single" })
         vim.lsp.handlers["textDocument/publishDiagnostics"] =
             vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = true })
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true
+        }
         capabilities.textDocument.completion.completionItem = {
             documentationFormat = { "markdown", "plaintext" },
             snippetSupport = true,
+            preselectSupport = true,
+            insertReplaceSupport = true,
+            labelDetailsSupport = true,
+            deprecatedSupport = true,
+            commitCharactersSupport = true,
+            tagSupport = { valueSet = { 1 } },
             resolveSupport = {
                 properties = {
                     "documentation",
@@ -67,11 +77,9 @@ return {
         capabilities.offsetEncoding = { "utf-8" }
         capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-        local opts = { noremap = true, silent = true }
-        local keymap = vim.keymap.set
-
-        local on_attach = function(client, bufnr)
-            opts.buffer = bufnr
+        local on_attach = function(client, _)
+            local keymap = vim.keymap.set
+            local opts = { noremap = true, silent = true }
 
             -- NVIM LSP KEYMAPS
             keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -96,7 +104,7 @@ return {
             "bashls",
             "cmake",
             "cssls",
-            "diagnosticls",
+            -- "diagnosticls",
             "html",
             "eslint",
             "groovyls",
@@ -194,11 +202,7 @@ return {
 
         lspconfig.cssls.setup({
             capabilities = capabilities,
-            on_attach = function(client, bufnr)
-                on_attach(client, bufnr)
-                client.server_capabilities.documentFormattingProvider = true
-                client.server_capabilities.documentRangeFormattingProvider = true
-            end,
+            on_attach = on_attach,
             settings = {
                 css = {
                     lint = {
