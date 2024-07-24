@@ -5,9 +5,7 @@
 - [x] Compatible configuration for Termux (Android terminal emulator)
 - [x] Edit LaTeX files with the help of `VimTex` and `Zathura` document viewer
 - [x] Custom LaTeX snippets for quick math mode
-- [x] Preview Markdown, UML, etc. in default browser with `markdown-preview`
 - [x] Code completion on Python, C, C++, LaTeX, etc. using `nvim-cmp`
-- [x] Built-in IDE-like functionality for several languages
 - [x] Language servers, Linters, Formatters, Debuggers, Build Tools
   - ls:`clangd` lint:`clang-tidy` format:`clang-format` debug:`gdb` build:`cmake` for C and C++
   - ls:`texlab` & `ltex-ls` format:`latexindent` for typesetting LaTeX
@@ -63,16 +61,16 @@ language server protocol. To install language servers, type `:Mason` in command
 mode and look for the language server that suits your needs.
 
 > There will be several language servers which automatically install.
-> Go to `~/.config/nvim/lua/nvole/plugins/lsp/mason.lua` to edit or disable the listed servers.
+> Go to `~/.config/nvim/lua/nvole/plugins/mason.lua` to edit or disable the listed servers.
 
-Add new servers in `~/.config/nvim/lua/nvole/plugins/lsp/lspconfig.lua`.
+Add new servers in `~/.config/nvim/lua/nvole/plugins/lspconfig.lua`.
 
 ## :nut_and_bolt: Troubleshoot
 
 ### Mason ERROR Log: `Current platform is unsupported` in Termux
 
 The config does not guarantee several Language Server or other tooling to work on
-`ARM 64` architecture. Manual server installation is needed to make LSP work.
+`ARM 64` architecture. Manual server installation is sometimes needed to make the LSP work.
 We'll take `clangd` and `rust-analyzer` as an example:
 
 - Install `clangd` using node package manager (requires `nodejs`): `npm i -g clangd`

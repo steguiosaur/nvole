@@ -92,6 +92,7 @@ return {
         end
 
         for _, server in ipairs({
+            "asm_lsp",
             "bashls",
             "cmake",
             "cssls",
