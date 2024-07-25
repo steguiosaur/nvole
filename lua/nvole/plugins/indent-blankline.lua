@@ -6,7 +6,6 @@ return {
 		require("ibl").setup({
 			indent = {
 				char = "▎",
-				highlight = highlight,
 			},
 			scope = {
 				enabled = true, -- 'true': Highlight only the intended indentation and the current scope by an underline.
