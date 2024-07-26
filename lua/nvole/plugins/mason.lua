@@ -37,7 +37,7 @@ return {
                 "ltex",
                 "pyright",
                 "phpactor",
-                "sqlls",
+                -- "sqlls",
                 "tsserver",
                 "volar",
                 "zls",

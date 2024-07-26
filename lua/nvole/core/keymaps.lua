@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true }
 local keymap = vim.keymap.set
 
 keymap("", "<Space>", "<Nop>", opts)
@@ -31,8 +31,8 @@ keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
-keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-keymap("n", "<leader>gs", vim.cmd.Git)
+keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "replace word" })
+keymap("n", "<leader>gs", vim.cmd.Git, { desc = "git status" })
 
 -- indent mode on (while holding <Shift>)
 keymap("v", "<", "<gv", opts)

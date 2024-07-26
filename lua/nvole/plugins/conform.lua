@@ -1,6 +1,6 @@
 return {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
+    event = { "BufReadPre" },
     keys = {
         {
             "<leader>lf",
@@ -11,7 +11,7 @@ return {
                 })
             end,
             mode = { "n", "v" },
-            desc = "Format file or range (in visual mode)",
+            desc = "conform format file",
         },
     },
     config = function()
@@ -79,5 +79,13 @@ return {
         end, {
             desc = "Re-enable autoformat-on-save",
         })
+
+        vim.keymap.set({ "n", "v" }, "<leader>lc", function()
+            if vim.b.disable_autoformat == true or vim.g.disable_autoformat == true then
+                vim.cmd("ConformEnable")
+            else
+                vim.cmd("ConformDisable")
+            end
+        end, { noremap = true, desc = "conform formatting on save" })
     end,
 }

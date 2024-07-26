@@ -78,23 +78,27 @@ return {
         capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
         local on_attach = function(client, bufnr)
-            local opts = { noremap = true, silent = true, buffer = bufnr }
+            local opts = { noremap = true, buffer = bufnr }
 
             -- NVIM LSP KEYMAPS
-            vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-            vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-            vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-            vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-            vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-            vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-            -- vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-            vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-            vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-            vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-            vim.keymap.set("n", "gb", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-            vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-            vim.keymap.set("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-            vim.keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+            vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts, { desc = "goto declaration" })
+            vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts, { desc = "goto definition" })
+            vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, { desc = "show hover" })
+            vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts, { desc = "goto implementation" })
+            vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts, { desc = "show references" })
+            vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, { desc = "show diagnostic" })
+            -- vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts, { desc = "format buffer" })
+            vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts, { desc = "show LSP info" })
+            vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts,
+                { desc = "show code actions" })
+            vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts,
+                { desc = "next diagnostic" })
+            vim.keymap.set("n", "gb", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts,
+                { desc = "prev diagnostic" })
+            vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts, { desc = "rename" })
+            vim.keymap.set("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts,
+                { desc = "show signature" })
+            vim.keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts, { desc = "set loclist" })
         end
 
         for _, server in ipairs({
@@ -119,14 +123,14 @@ return {
             })
         end
 
-		lspconfig.sqlls.setup {
+        lspconfig.sqlls.setup {
             on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = { 'sql', 'mysql', 'sqlite' },
-			root_dir = function(_)
-				return vim.loop.cwd()
-			end,
-		}
+            capabilities = capabilities,
+            filetypes = { 'sql', 'mysql', 'sqlite' },
+            root_dir = function(_)
+                return vim.loop.cwd()
+            end,
+        }
 
         lspconfig.ltex.setup({
             on_attach = on_attach,

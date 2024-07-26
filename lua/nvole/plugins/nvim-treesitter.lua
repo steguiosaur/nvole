@@ -43,7 +43,6 @@ return {
             },
         })
 
-        -- https://github.com/EmranMR/tree-sitter-blade/discussions/19#discussion-5400675
         local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
         parser_config.blade = {
             install_info = {
