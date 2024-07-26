@@ -22,18 +22,18 @@
 
 ### Installation
 
-To get started, install git and neovim:
+To get started, install the following packages:
 
 > Debian based distribution
 
 ```shell
-sudo apt install git neovim
+sudo apt install git neovim ripgrep nodejs
 ```
 
 > Arch based distribution
 
 ```shell
-sudo pacman -S git neovim
+sudo pacman -S git neovim ripgrep nodejs
 ```
 
 Clone the repository to `$HOME/.config/nvim`:
@@ -48,7 +48,7 @@ Install plugins by running `nvim` in the terminal. It will automatically install
 the package manager on initial startup. Type `Lazy install` in command mode to
 install plugins. Restore repository default version of plugins with `Lazy restore`.
 
-> Plugins listed at `~/.config/nvim/lua/nvole/core/plugins/` folder.
+> Plugins listed at `~/.config/nvim/lua/nvole/plugins/` folder.
 
 ```shell
 :Lazy restore
@@ -61,7 +61,7 @@ language server protocol. To install language servers, type `:Mason` in command
 mode and look for the language server that suits your needs.
 
 > There will be several language servers which automatically install.
-> Go to `~/.config/nvim/lua/nvole/plugins/mason.lua` to edit or disable the listed servers.
+> Go to `~/.config/nvim/lua/nvole/plugins/mason.lua` to view the listed servers.
 
 Add new servers in `~/.config/nvim/lua/nvole/plugins/lspconfig.lua`.
 
@@ -83,7 +83,3 @@ server before adding it to `$PATH`.
 ### `latexindent` formatter not working
 
 Install `libxcrypt-compat` using the package manager. Termux compatibility not verified.
-
-### `telescope grep` not working
-
-Install `ripgrep`
