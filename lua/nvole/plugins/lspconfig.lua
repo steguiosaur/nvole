@@ -130,6 +130,8 @@ return {
         end
 
         lspconfig.sqlls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
             filetypes = { 'sql', 'mysql', 'sqlite' },
             root_dir = function(_)
                 return vim.loop.cwd()
@@ -137,6 +139,8 @@ return {
         }
 
         lspconfig.ltex.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
                 ltex = {
                     language = "en-US",
@@ -146,6 +150,8 @@ return {
         })
 
         lspconfig.phpactor.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             cmd = { "phpactor", "language-server", "-vv" },
             filetypes = { "php", "blade" },
             root_dir = function(_)
@@ -164,6 +170,8 @@ return {
         })
 
         lspconfig.clangd.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             cmd = {
                 "clangd",
                 "--offset-encoding=utf-16",
@@ -190,6 +198,8 @@ return {
         end
 
         lspconfig.lua_ls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             ft = { "lua" },
             settings = {
                 Lua = {
@@ -207,6 +217,8 @@ return {
         })
 
         lspconfig.cssls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
                 css = {
                     lint = {
@@ -222,6 +234,8 @@ return {
         })
 
         lspconfig.jsonls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
                 json = {
                     schemas = {
