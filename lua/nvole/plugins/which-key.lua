@@ -3,8 +3,17 @@ return {
     event = "VeryLazy",
     init = function()
         vim.o.timeout = true
-        vim.o.timeoutlen = 500
+        vim.o.timeoutlen = 2000
     end,
+    keys = {
+        {
+            "<leader>?",
+            function()
+                require("which-key").show({ global = false })
+            end,
+            desc = "which-key local keymaps",
+        },
+    },
     opts = {
         plugins = {
             marks = true,

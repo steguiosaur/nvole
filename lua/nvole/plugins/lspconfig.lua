@@ -104,13 +104,19 @@ return {
         for _, server in ipairs({
             "asm_lsp",
             "bashls",
+            "clangd",
             "cmake",
             "cssls",
-            "html",
             "eslint",
             "groovyls",
+            "html",
+            "jsonls",
             "kotlin_language_server",
+            "ltex",
+            "lua_ls",
+            "phpactor",
             "pyright",
+            "sqlls",
             "tailwindcss",
             "texlab",
             "tsserver",
@@ -124,8 +130,6 @@ return {
         end
 
         lspconfig.sqlls.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
             filetypes = { 'sql', 'mysql', 'sqlite' },
             root_dir = function(_)
                 return vim.loop.cwd()
@@ -133,8 +137,6 @@ return {
         }
 
         lspconfig.ltex.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
             settings = {
                 ltex = {
                     language = "en-US",
@@ -146,8 +148,6 @@ return {
         lspconfig.phpactor.setup({
             cmd = { "phpactor", "language-server", "-vv" },
             filetypes = { "php", "blade" },
-            on_attach = on_attach,
-            capabilities = capabilities,
             root_dir = function(_)
                 return vim.loop.cwd()
             end,
@@ -177,8 +177,6 @@ return {
                 "--header-insertion=iwyu",
                 "--pch-storage=memory",
             },
-            on_attach = on_attach,
-            capabilities = capabilities,
         })
 
         local rt_ok, rust_tools = pcall(require, "rust-tools")
@@ -193,8 +191,6 @@ return {
 
         lspconfig.lua_ls.setup({
             ft = { "lua" },
-            capabilities = capabilities,
-            on_attach = on_attach,
             settings = {
                 Lua = {
                     runtime = {
@@ -211,8 +207,6 @@ return {
         })
 
         lspconfig.cssls.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
             settings = {
                 css = {
                     lint = {
@@ -228,8 +222,6 @@ return {
         })
 
         lspconfig.jsonls.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
             settings = {
                 json = {
                     schemas = {
