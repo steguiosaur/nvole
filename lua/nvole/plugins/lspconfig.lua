@@ -114,7 +114,7 @@ return {
             "kotlin_language_server",
             "ltex",
             "lua_ls",
-            "phpactor",
+            "intelephense",
             "pyright",
             "sqlls",
             "tailwindcss",
@@ -149,26 +149,6 @@ return {
             },
         })
 
-        lspconfig.phpactor.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            cmd = { "phpactor", "language-server", "-vv" },
-            filetypes = { "php", "blade" },
-            root_dir = function(_)
-                return vim.loop.cwd()
-            end,
-            init_options = {
-                ["language_server_phpstan.enabled"] = false,
-                ["language_server_psalm.enabled"] = false,
-                ["language_server_completion.trim_leading_dollar"] = true,
-                ["language_server_worse_reflection.inlay_hints.enable"] = true,
-                ["language_server_worse_reflection.inlay_hints.params"] = true,
-                ["language_server_worse_reflection.inlay_hints.types"] = true,
-                ["language_server_configuration.auto_config"] = true,
-                ["code_transform.import_globals"] = true,
-            },
-        })
-
         lspconfig.clangd.setup({
             on_attach = on_attach,
             capabilities = capabilities,
@@ -184,6 +164,9 @@ return {
                 "--header-insertion-decorators",
                 "--header-insertion=iwyu",
                 "--pch-storage=memory",
+                "--print-options",
+                "-j=4",
+                "--log=verbose"
             },
         })
 
