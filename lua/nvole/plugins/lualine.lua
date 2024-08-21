@@ -26,7 +26,7 @@ return {
 		-- Lualine
 		require("lualine").setup({
 			options = {
-				theme = "nightfly",
+				theme = "fullerene",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "|", right = "|" },
 			},

@@ -36,6 +36,7 @@ return {
         luasnip.filetype_extend("blade", { "html" })
         luasnip.filetype_extend("php", { "html" })
         luasnip.filetype_extend("php", { "phpdoc" })
+        luasnip.filetype_extend("vue", { "html" })
 
         local kind_icons = {
             Text = "",

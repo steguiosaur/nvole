@@ -13,7 +13,9 @@ local path_to_jtest_package = path_to_mason_packages .. "java-test/"
 -- local jdtls_path = path_to_jdtls_package .. "jdtls"
 -- local path_to_plugins = path_to_jdtls_package .. "plugins/"
 
-local path_to_config = path_to_jdtls_package .. "/config_linux_arm"
+local path_to_config = vim.fn.has("Android") == 1 and path_to_jdtls_package .. "/config_linux_arm" or
+path_to_jdtls_package .. "/config_linux"
+
 -- [CRITICAL]
 local path_to_jar = path_to_jdtls_package .. "plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 local lombok_path = path_to_jdtls_package .. "/lombok.jar"
@@ -124,6 +126,28 @@ config['on_attach'] = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
         vim.lsp.buf.format()
     end, { desc = "Format current buffer with LSP" })
+
+    local opts = { noremap = true, buffer = bufnr }
+
+    -- NVIM LSP KEYMAPS
+    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts, { desc = "goto declaration" })
+    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts, { desc = "goto definition" })
+    vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, { desc = "show hover" })
+    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts, { desc = "goto implementation" })
+    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts, { desc = "show references" })
+    vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, { desc = "show diagnostic" })
+    -- vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts, { desc = "format buffer" })
+    vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts, { desc = "show LSP info" })
+    vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts,
+        { desc = "show code actions" })
+    vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts,
+        { desc = "next diagnostic" })
+    vim.keymap.set("n", "gb", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts,
+        { desc = "prev diagnostic" })
+    vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts, { desc = "rename" })
+    vim.keymap.set("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts,
+        { desc = "show signature" })
+    vim.keymap.set("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts, { desc = "set loclist" })
 end
 
 local capabilities = {
