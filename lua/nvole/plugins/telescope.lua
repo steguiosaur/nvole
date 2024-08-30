@@ -37,13 +37,13 @@ return {
 
         telescope.load_extension("fzf")
 
-        vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-        vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
-        vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-        vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles<CR>")
-        vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
-        vim.keymap.set("n", "<leader>fc", ":Telescope git_commits<CR>")
-        vim.keymap.set("n", "<leader>fs", ":Telescope git_status<CR>")
-        vim.keymap.set("n", "<leader>fk", ":Telescope keymaps<CR>")
+        vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+        vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
+        vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
+        vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
+        vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
+        vim.keymap.set("n", "<leader>fc", "<cmd>Telescope git_commits<CR>")
+        vim.keymap.set("n", "<leader>fs", "<cmd>Telescope git_status<CR>")
+        vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>")
     end,
 }

@@ -24,12 +24,12 @@ keymap("i", "<C-l>", "<C-o>l", opts)
 keymap("n", "<C-g>", "g<C-g>", opts)
 
 -- move text up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
-keymap("i", "<A-j>", "<ESC>:m .+1<CR>==gi", opts)
-keymap("i", "<A-k>", "<ESC>:m .-2<CR>==gi", opts)
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("n", "<A-j>", "<cmd>m .+1<CR>==", opts)
+keymap("n", "<A-k>", "<cmd>m .-2<CR>==", opts)
+keymap("i", "<A-j>", "<ESC><cmd>m .+1<CR>==gi", opts)
+keymap("i", "<A-k>", "<ESC><cmd>m .-2<CR>==gi", opts)
+keymap("v", "<A-j>", "<cmd>m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", "<cmd>m '<-2<CR>gv=gv", opts)
 
 keymap("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "replace word" })
 keymap("n", "<leader>gs", vim.cmd.Git, { desc = "git status" })
@@ -53,10 +53,10 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 
 -- window resize
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", "<cmd>resize +2<CR>", opts)
+keymap("n", "<C-Down>", "<cmd>resize -2<CR>", opts)
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
 
 -- window vertical to horizontal (vice versa)
 keymap("n", "<C-S-Up>", "<C-w><S-k>", opts)
@@ -65,20 +65,20 @@ keymap("n", "<C-S-Left>", "<C-w><S-h>", opts)
 keymap("n", "<C-S-Right>", "<C-w><S-l>", opts)
 
 -- buffer navigation
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<S-q>", ":bw<CR>", opts)
+keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
+keymap("n", "<S-q>", "<cmd>bw<CR>", opts)
 
 ---- ADDITIONAL KEYMAPS
 -- fast <ESC>
 keymap("i", "jj", "<ESC>", opts)
 
 -- save and quit
-keymap("n", "<leader>q", ":q<CR>", opts)
-keymap("n", "<leader>w", ":w<CR>", opts)
+keymap("n", "<leader>q", "<cmd>q<CR>", opts)
+keymap("n", "<leader>w", "<cmd>w<CR>", opts)
 
 -- remove highlight
-keymap("n", "<Esc><Esc>", ":noh<CR>", opts)
+keymap("n", "<Esc><Esc>", "<cmd>noh<CR>", opts)
 
 -- word count
 keymap("v", "<C-g>", "g<C-g>", opts)

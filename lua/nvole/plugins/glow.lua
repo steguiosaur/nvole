@@ -10,6 +10,6 @@ return {
             height_ratio = 0.85,
         })
 
-        vim.keymap.set("n", "<leader>lg", ":Glow<CR>", { noremap = true })
+        vim.keymap.set("n", "<leader>lg", "<cmd>Glow<CR>", { noremap = true })
     end,
 }

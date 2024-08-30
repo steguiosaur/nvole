@@ -14,7 +14,7 @@ local path_to_jtest_package = path_to_mason_packages .. "java-test/"
 -- local path_to_plugins = path_to_jdtls_package .. "plugins/"
 
 local path_to_config = vim.fn.has("Android") == 1 and path_to_jdtls_package .. "/config_linux_arm" or
-path_to_jdtls_package .. "/config_linux"
+    path_to_jdtls_package .. "/config_linux"
 
 -- [CRITICAL]
 local path_to_jar = path_to_jdtls_package .. "plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
@@ -170,6 +170,31 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 config.init_options = {
     bundles = bundles,
     extendedClientCapabilities = extendedClientCapabilities
+}
+
+config.settings.java.configuration = {
+    runtimes = {
+        {
+            name = "JavaSE-8",
+            path = "/usr/lib/jvm/java-8-openjdk/",
+        },
+        {
+            name = "JavaSE-11",
+            path = "/usr/lib/jvm/java-11-openjdk/",
+        },
+        {
+            name = "JavaSE-17",
+            path = "/usr/lib/jvm/java-17-openjdk/",
+        },
+        {
+            name = "JavaSE-21",
+            path = "/usr/lib/jvm/java-21-openjdk/",
+        },
+        {
+            name = "JavaSE-22",
+            path = "/usr/lib/jvm/java-22-openjdk/",
+        },
+    }
 }
 
 require('jdtls').start_or_attach(config)

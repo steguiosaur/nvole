@@ -75,7 +75,7 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
+        vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true })
         vim.cmd(
             "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
         )
