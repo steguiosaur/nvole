@@ -39,7 +39,7 @@ return {
                 "pyright",
                 -- "phpactor",
                 -- "sqlls",
-                "tsserver",
+                "ts_ls",
                 "volar",
                 "zls",
             },
