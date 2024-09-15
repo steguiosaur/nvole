@@ -119,7 +119,7 @@ return {
             "sqlls",
             "tailwindcss",
             "texlab",
-            "tsserver",
+            "ts_ls",
             "volar",
             "zls",
         }) do
