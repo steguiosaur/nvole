@@ -16,7 +16,7 @@ require("lazy").setup({
 	{ import = "nvole.plugins" },
 }, {
 	install = {
-		colorscheme = { "tundra" },
+		colorscheme = { "fullerene" },
 	},
 	checker = {
 		enabled = true,
