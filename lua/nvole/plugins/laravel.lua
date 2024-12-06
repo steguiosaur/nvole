@@ -6,6 +6,7 @@ return {
 		"MunifTanjim/nui.nvim",
 		"nvimtools/none-ls.nvim",
 	},
+    branch = "v2.2.1",
 	cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
 	keys = {
 		{ "<leader>lva", "<cmd>Laravel artisan<cr>" },
@@ -13,5 +14,6 @@ return {
 		{ "<leader>lvm", "<cmd>Laravel related<cr>" },
 	},
 	event = { "VeryLazy" },
+    opts = {},
 	config = true,
 }

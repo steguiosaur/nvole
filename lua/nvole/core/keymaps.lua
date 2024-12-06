@@ -69,6 +69,9 @@ keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
 keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 keymap("n", "<S-q>", "<cmd>bw<CR>", opts)
 
+-- Duplicate a line and comment out the first line
+vim.keymap.set('n', 'yc', 'yy<cmd>normal gcc<CR>p')
+
 ---- ADDITIONAL KEYMAPS
 -- fast <ESC>
 keymap("i", "jj", "<ESC>", opts)
@@ -78,7 +81,7 @@ keymap("n", "<leader>q", "<cmd>q<CR>", opts)
 keymap("n", "<leader>w", "<cmd>w<CR>", opts)
 
 -- remove highlight
-keymap("n", "<Esc><Esc>", "<cmd>noh<CR>", opts)
+keymap("n", "<Esc>", "<cmd>noh<CR>", opts)
 
 -- word count
 keymap("v", "<C-g>", "g<C-g>", opts)

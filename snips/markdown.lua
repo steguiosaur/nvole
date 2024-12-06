@@ -40,14 +40,14 @@ return {
         t("`"), i(1), t("`"),
     }),
 
-    -- Commands and code
-    s({trig="code", dscr="Command environment"},
-        {
-            t({ "```console",
-                ""}),i(1),
-            t({ "", "```"}),
-        }
-    ),
+    -- -- Commands and code
+    -- s({trig="code", dscr="Command environment"},
+    --     {
+    --         t({ "```console",
+    --             ""}),i(1),
+    --         t({ "", "```"}),
+    --     }
+    -- ),
 
     -- link
     s({trig="link", dscr="Insert [link](www.url.com)"}, {
