@@ -6,7 +6,7 @@ return {
 		"MunifTanjim/nui.nvim",
 		"nvimtools/none-ls.nvim",
 	},
-    branch = "v2.2.1",
+    tag = "v2.2.1",
 	cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
 	keys = {
 		{ "<leader>lva", "<cmd>Laravel artisan<cr>" },
