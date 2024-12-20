@@ -1,19 +1,20 @@
 return {
-	"adalessa/laravel.nvim",
-	dependencies = {
-		"nvim-telescope/telescope.nvim",
-		"tpope/vim-dotenv",
-		"MunifTanjim/nui.nvim",
-		"nvimtools/none-ls.nvim",
-	},
-    tag = "v2.2.1",
-	cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
-	keys = {
-		{ "<leader>lva", "<cmd>Laravel artisan<cr>" },
-		{ "<leader>lvr", "<cmd>Laravel routes<cr>" },
-		{ "<leader>lvm", "<cmd>Laravel related<cr>" },
-	},
-	event = { "VeryLazy" },
+    "adalessa/laravel.nvim",
+    enabled = true,
+    dependencies = {
+        "tpope/vim-dotenv",
+        "MunifTanjim/nui.nvim",
+        "nvimtools/none-ls.nvim",
+        "kevinhwang91/promise-async",
+    },
+    tag = "v3.1.0",
+    cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
+    keys = {
+        { "<leader>lva", "<cmd>Laravel artisan<cr>" },
+        { "<leader>lvr", "<cmd>Laravel routes<cr>" },
+        { "<leader>lvm", "<cmd>Laravel related<cr>" },
+    },
+    event = { "VeryLazy" },
     opts = {},
-	config = true,
+    config = true,
 }
