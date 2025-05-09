@@ -23,6 +23,7 @@ return {
                 "bash",
                 "kotlin",
                 "groovy",
+                "json",
             },
             textobjects = {
                 select = {

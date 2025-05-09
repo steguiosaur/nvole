@@ -38,7 +38,7 @@ return {
 					{
 						"diagnostics",
 						on_click = function()
-							vim.cmd("Trouble document_diagnostics")
+							vim.cmd("Trouble diagnostics toggle filter.buf=0")
 						end,
 					},
 					"filename",
