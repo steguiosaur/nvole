@@ -61,9 +61,9 @@ language server protocol. To install language servers, type `:Mason` in command
 mode and look for the language server that suits your needs.
 
 > There will be several language servers which automatically install.
-> Go to `~/.config/nvim/lua/nvole/plugins/mason.lua` to view the listed servers.
+> Go to `~/.config/nvim/lua/nvole/core/mason-init.lua` to view the listed servers.
 
-Add new servers in `~/.config/nvim/lua/nvole/plugins/lspconfig.lua`.
+Add new servers in `~/.config/nvim/lua/nvole/core/mason-init.lua`.
 
 ## :nut_and_bolt: Troubleshoot
 
