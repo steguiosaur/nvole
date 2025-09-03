@@ -29,7 +29,7 @@ function M.setup()
             "cmake",
             "cssls",
             -- "diagnosticls",
-            -- "eslint",
+            "eslint",
             -- "groovyls",
             "html",
             "intelephense",
@@ -40,8 +40,8 @@ function M.setup()
             "pyright",
             -- "phpactor",
             -- "sqlls",
-            -- "ts_ls",
-            -- "volar",
+            "ts_ls",
+            -- "vue_ls",
             -- "zls",
         },
         automatic_installation = {
@@ -59,6 +59,7 @@ function M.setup()
                 "lua_ls",
                 "texlab",
                 "clangd",
+                "ltex",
             },
         },
         handlers = {
@@ -71,8 +72,8 @@ function M.setup()
             ["lua_ls"] = function()
             end,
 
-            ["volar"] = function()
-                require("lspconfig").volar.setup({
+            ["vue_ls"] = function()
+                require("lspconfig").vue_ls.setup({
                     capabilities = lsp_shared.capabilities,
                     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
                     init_options = {
