@@ -56,6 +56,7 @@ function M.setup()
         automatic_enable = {
             exclude = {
                 "jdtls",
+                "rust_analyzer",
                 "lua_ls",
                 "texlab",
                 "clangd",
@@ -64,7 +65,7 @@ function M.setup()
         },
         handlers = {
             function(server_name)
-                require("lspconfig")[server_name].setup({
+                vim.lsp.config(server_name, {
                     capabilities = lsp_shared.capabilities,
                 })
             end,
@@ -73,7 +74,7 @@ function M.setup()
             end,
 
             ["vue_ls"] = function()
-                require("lspconfig").vue_ls.setup({
+                vim.lsp.config("vue_ls", {
                     capabilities = lsp_shared.capabilities,
                     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
                     init_options = {
@@ -118,23 +119,23 @@ function M.setup()
             end,
 
             ["sqlls"] = function()
-                require("lspconfig").sqlls.setup {
+                vim.lsp.config("sqlls", {
                     capabilities = lsp_shared.capabilities,
                     filetypes = { 'sql', 'mysql', 'sqlite' },
                     root_dir = function(_)
                         return vim.loop.cwd()
                     end,
-                }
+                })
             end,
 
-            ["rust_analyzer"] = function()
-            end,
+            -- ["rust_analyzer"] = function()
+            -- end,
 
             ["jdtls"] = function()
             end,
 
             ["cssls"] = function()
-                require("lspconfig").cssls.setup({
+                vim.lsp.config("cssls", {
                     capabilities = lsp_shared.capabilities,
                     settings = {
                         css = {
@@ -155,7 +156,7 @@ function M.setup()
             end,
 
             ["jsonls"] = function()
-                require("lspconfig").jsonls.setup({
+                vim.lsp.config("jsonls", {
                     capabilities = lsp_shared.capabilities,
                     settings = {
                         json = {
@@ -200,7 +201,7 @@ function M.setup()
         }
     })
 
-    require("lspconfig").clangd.setup({
+    vim.lsp.config("clangd", {
         capabilities = lsp_shared.capabilities,
         cmd = {
             "clangd",
@@ -220,26 +221,29 @@ function M.setup()
         },
     })
 
-    require("lspconfig").lua_ls.setup({
+    vim.lsp.config("lua_ls", {
         capabilities = lsp_shared.capabilities,
         settings = {
             Lua = {
                 runtime = { version = "LuaJIT" },
                 diagnostics = { globals = { "vim" } },
-                workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
+                workspace = {
+                    -- library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false
+                },
                 telemetry = { enable = false },
             },
         },
     })
 
-    local rt_ok, rust_tools = pcall(require, "rust-tools")
-    if rt_ok then
-        rust_tools.setup({ server = { capabilities = lsp_shared.capabilities } })
-    else
-        require("lspconfig").rust_analyzer.setup({ capabilities = lsp_shared.capabilities })
-    end
-
-    require("lspconfig").ltex.setup({
+    -- local rt_ok, rust_tools = pcall(require, "rust-tools")
+    -- if rt_ok then
+    --     rust_tools.setup({ server = { capabilities = lsp_shared.capabilities } })
+    -- else
+    --     vim.lsp.config("rust_analyzer", { capabilities = lsp_shared.capabilities })
+    -- end
+    --
+    vim.lsp.config("ltex", {
         capabilities = lsp_shared.capabilities,
         settings = {
             ltex = {
