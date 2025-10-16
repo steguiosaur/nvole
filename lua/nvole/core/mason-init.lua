@@ -38,10 +38,10 @@ function M.setup()
             -- "kotlin_language_server",
             "ltex",
             "pyright",
-            -- "phpactor",
+            "phpactor",
             -- "sqlls",
-            "ts_ls",
-            -- "vue_ls",
+            "vtsls",
+            "vue_ls",
             -- "zls",
         },
         automatic_installation = {
@@ -55,6 +55,9 @@ function M.setup()
         },
         automatic_enable = {
             exclude = {
+                "vue_ls",
+                "ts_ls",
+                "phpactor",
                 "jdtls",
                 "rust_analyzer",
                 "lua_ls",
@@ -70,51 +73,28 @@ function M.setup()
                 })
             end,
 
-            ["lua_ls"] = function()
+            ["phpactor"] = function() 
+                vim.lsp.config("phpactor", {
+                    capabilities = lsp_shared.capabilities,
+                    init_options = {
+                        ["language_server_phpstan.enabled"] = false,
+                        ["language_server_psalm.enabled"] = false,
+                    }
+                })
             end,
 
-            ["vue_ls"] = function()
-                vim.lsp.config("vue_ls", {
+            ["html"] = function()
+                vim.lsp.config("html", {
                     capabilities = lsp_shared.capabilities,
-                    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+                    filetypes = { "html", "blade" },
                     init_options = {
-                        languageFeatures = {
-                            references = true,
-                            definition = true,
-                            typeDefinition = true,
-                            callHierarchy = true,
-                            hover = true,
-                            rename = true,
-                            signatureHelp = true,
-                            codeAction = true,
-                            completion = {
-                                defaultTagNameCase = "both",
-                                defaultAttrNameCase = "kebabCase",
-                            },
-                            schemaRequestService = true,
-                            documentHighlight = true,
-                            codeLens = true,
-                            semanticTokens = true,
-                            diagnostics = true,
+                        configurationSection = { "html", "css", "javascript" },
+                        embeddedLanguages = {
+                            css = true,
+                            javascript = true
                         },
-                        documentFeatures = {
-                            selectionRange = true,
-                            foldingRange = true,
-                            linkedEditingRange = true,
-                            documentSymbol = true,
-                            documentColor = true,
-                        },
-                    },
-                    settings = {
-                        volar = {
-                            codeLens = {
-                                references = true,
-                                pugTools = true,
-                                scriptSetupTools = true,
-                            },
-                        },
-                    },
-                    root_markers = { "package.json", "vue.config.js" }
+                        provideFormatter = true
+                    }
                 })
             end,
 
@@ -127,9 +107,6 @@ function M.setup()
                     end,
                 })
             end,
-
-            -- ["rust_analyzer"] = function()
-            -- end,
 
             ["jdtls"] = function()
             end,
@@ -236,13 +213,6 @@ function M.setup()
         },
     })
 
-    -- local rt_ok, rust_tools = pcall(require, "rust-tools")
-    -- if rt_ok then
-    --     rust_tools.setup({ server = { capabilities = lsp_shared.capabilities } })
-    -- else
-    --     vim.lsp.config("rust_analyzer", { capabilities = lsp_shared.capabilities })
-    -- end
-    --
     vim.lsp.config("ltex", {
         capabilities = lsp_shared.capabilities,
         settings = {
@@ -252,6 +222,37 @@ function M.setup()
             },
         },
     })
+
+    vim.lsp.config("vtsls", {
+        settings = {
+            typescript = {
+                preferences = {
+                    importModuleSpecifier = "project-relative",
+                },
+            },
+            vtsls = {
+                experimental = {
+                    completion = {
+                        enableServerSideFuzzyMatch = true,
+                    },
+                },
+                tsserver = {
+                    globalPlugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vim.fn.stdpath("data")
+                                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                            languages = { "vue" },
+                            configNamespace = "typescript",
+                        },
+                    },
+                },
+            },
+        },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    })
+
+    vim.lsp.enable({'vtsls', 'vue_ls', 'lua_ls', 'clangd', 'ltex'})
 
 
     if mason_tool_installer then
