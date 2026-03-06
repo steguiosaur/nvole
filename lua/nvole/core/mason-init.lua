@@ -38,6 +38,7 @@ function M.setup()
             -- "kotlin_language_server",
             "ltex",
             "pyright",
+            "pyrefly",
             "phpactor",
             -- "sqlls",
             "vtsls",

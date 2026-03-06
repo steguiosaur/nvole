@@ -155,8 +155,8 @@ local config = {
                         path = "/usr/lib/jvm/java-21-openjdk/",
                     },
                     {
-                        name = "JavaSE-24",
-                        path = "/usr/lib/jvm/java-24-openjdk/",
+                        name = "JavaSE-25",
+                        path = "/usr/lib/jvm/java-25-openjdk/",
                     },
                 },
             },
