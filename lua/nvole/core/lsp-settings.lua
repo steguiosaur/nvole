@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts, { desc = "show references" })
         vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts, { desc = "show diagnostic" })
         -- vim.keymap.set("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts, { desc = "format buffer" })
-        vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts, { desc = "show LSP info" })
+        vim.keymap.set("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", opts, { desc = "show LSP info" })
         vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts, { desc = "show code actions" })
         vim.keymap.set("n", "gn", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts, { desc = "next diagnostic" })
         vim.keymap.set("n", "gb", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts, { desc = "prev diagnostic" })

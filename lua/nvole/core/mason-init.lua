@@ -181,6 +181,8 @@ function M.setup()
 
     vim.lsp.config("clangd", {
         capabilities = lsp_shared.capabilities,
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+        root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
         cmd = {
             "clangd",
             "--offset-encoding=utf-16",

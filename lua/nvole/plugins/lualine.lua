@@ -48,7 +48,7 @@ return {
 					{
 						require("lsp-progress").progress,
 						on_click = function()
-							vim.cmd("LspInfo")
+							vim.cmd("checkhealth vim.lsp")
 						end,
 					},
 					line_x,
