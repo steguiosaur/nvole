@@ -10,14 +10,14 @@ vim.g.maplocalleader = " "
 keymap({ "n", "v" }, "<S-j>", "}", opts)
 keymap({ "n", "v" }, "<S-k>", "{", opts)
 
-keymap({ "n", "v" }, "<S-n>", "<C-d>", opts)
-keymap({ "n", "v" }, "<S-m>", "<C-u>", opts)
+-- keymap({ "n", "v" }, "<C-j>", "<C-d>", opts)
+-- keymap({ "n", "v" }, "<C-k>", "<C-u>", opts)
 
 -- insert mode navigation
-keymap("i", "<C-h>", "<C-o>h", opts)
-keymap("i", "<C-j>", "<C-o>j", opts)
-keymap("i", "<C-k>", "<C-o>k", opts)
-keymap("i", "<C-l>", "<C-o>l", opts)
+-- keymap("i", "<C-h>", "<C-o>h", opts)
+-- keymap("i", "<C-j>", "<C-o>j", opts)
+-- keymap("i", "<C-k>", "<C-o>k", opts)
+-- keymap("i", "<C-l>", "<C-o>l", opts)
 
 ---- TEXT CONTROLS
 -- word count
